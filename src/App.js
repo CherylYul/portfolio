@@ -8,7 +8,6 @@ import Blogs from "./pages/Blogs"
 import Chinese from "./pages/Chinese"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
-// import logo from './logo.svg';
 import './App.css';
 
 function App() {

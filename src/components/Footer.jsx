@@ -41,22 +41,10 @@ export default function Footer(props) {
         <div className="footer--right">
             <h4>Contact me.</h4>
             <div className="contact-container">
-                <div>
-                    <i className="fa-brands fa-github fa-xl"></i>
-                    <p>Github</p>
-                </div>
-                <div>
-                    <i className="fa-brands fa-linkedin fa-xl"></i>
-                    <p>LinkedIn</p>                
-                </div>
-                <div>
-                    <i className="fa-brands fa-twitter fa-xl"></i>
-                    <p>Twitter</p>                
-                </div>
-                <div>
-                    <i className="fa-solid fa-envelope fa-xl"></i>
-                    <p>Email</p>                
-                </div>
+                <div><i class="bi bi-github"></i><p>Github</p></div>
+                <div><i class="bi bi-linkedin"></i><p>LinkedIn</p></div>
+                <div><i class="bi bi-twitter"></i><p>Twitter</p></div>
+                <div><i class="bi bi-envelope"></i><p>Email</p></div>
             </div>
         </div>
     </footer>

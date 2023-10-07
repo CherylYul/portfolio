@@ -1,5 +1,5 @@
 import React from "react"
-import ava from "../logo.svg"
+import ava from "../assets/logo.svg"
 
 export default function Home(props) {
     return (
