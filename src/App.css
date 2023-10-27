@@ -1,13 +1,15 @@
-.home-container, .chinese-container { padding: 1rem 2rem; }
+.home-container, 
+.chinese-container,
+.blog-list-container { padding: 1rem 2rem; }
 .home-container.dark,
 .chinese-container.dark,
 .projects-container.dark,
-.blogs-container.dark { background-color: #282D35; }
+.blog-list-container.dark { background-color: #282D35; }
 header.dark, footer.dark { background-color: #21222A; }
 
 /* ----- UTILS ----- */
 
-.dark { color: #fdfdfd; }
+.dark { background-color: #282D35; color: #fdfdfd; }
 .cfd9de-border { border: 2px solid #cfd9de; }
 .bold { font-weight: 600; }
 p { 
@@ -187,6 +189,79 @@ footer i { font-size: 1.5rem; }
 
 .chinese-container a {
   color: inherit;
+}
+
+/* ----- BLOG ----- */
+
+.blog-list-container { 
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.blog-list-filter-buttons { 
+  border-bottom: 1px solid #cfd9de;
+  padding-bottom: 1rem;
+}
+
+.blog-filter { 
+  margin-bottom: 0; 
+}
+
+.blog-type {
+  padding: 0.325rem 1rem;
+  border: 1px solid #4D4D4D;
+  border-radius: 5px;
+  background-color: #fafafa;
+  color: #4D4D4D;
+  margin: 0.5rem 1rem 0 0;
+}
+
+.blog-type:hover {
+  background: #4D4D4D;
+  color: #fafafa;
+  border: none;
+}
+
+.blog-type:focus {
+  outline: none;
+}
+
+.blog-type.selected {
+  background-color: #f0ddb8;
+  color: #1C1D21;
+  border: none;
+  font-weight: 600;
+}
+
+.blog-list-container.dark .post-container a { 
+  color: #fdfdfd; 
+}
+
+.blog-list-container.dark .blog-list-filter-buttons { 
+  border-bottom: 1.5px solid rgba(229, 231, 235, 0.5); 
+}
+
+.blog-list-container.dark .blog-type { 
+  border: 2px solid rgba(229, 231, 235, 0.5);
+  background-color: #23272f;
+  color: #FFFFFF;
+}
+
+.blog-list-container.dark .blog-type.selected {
+  background-color: #f0ddb8;
+  color: #1C1D21;
+  border: none;
+  font-weight: 600;
+}
+
+.post-container { margin: 2rem auto; }
+.post-container a { text-decoration: none; }
+.post-container a:link,
+.post-container a:visited { color: #1C1D21; }
+.post-title { margin: 0.5rem 0; }
+.post-date {
+  display: block;
+  margin-top: 1rem;
 }
 
 /* ----- ANIMATION ----- */

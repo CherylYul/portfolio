@@ -5,6 +5,7 @@ import Home from "./pages/Home"
 import About from "./pages/About"
 import Projects from "./pages/Projects"
 import Blogs from "./pages/Blogs"
+import BlogDetail from "./pages/BlogDetail"
 import Chinese from "./pages/Chinese"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
@@ -22,6 +23,7 @@ function App() {
             <Route path="/about" element={<About mode={dark} />} />
             <Route path="/projects" element={<Projects mode={dark} />} />
             <Route path="/blogs" element={<Blogs mode={dark} />} />
+            <Route path="/blogs/:id" element={<BlogDetail mode={dark} />} />
             <Route path="/chinese" element={<Chinese mode={dark} />} />
         </Routes>
         <Footer mode={dark} />
