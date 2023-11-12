@@ -264,6 +264,38 @@ footer i { font-size: 1.5rem; }
   margin-top: 1rem;
 }
 
+/* ----- PROJECTS ----- */
+
+.projects-list-container { 
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.project-el { 
+  margin: 4rem 0;
+}
+
+.project-skill {
+  padding: 0.325rem 1rem;
+  border: 1px solid #4D4D4D;
+  border-radius: 5px;
+  background-color: #fafafa;
+  color: #4D4D4D;
+  margin: 0.5rem 1rem 0 0;
+}
+
+.project-skill:hover {
+  background: #4D4D4D;
+  color: #fafafa;
+  border: none;
+}
+
+.project-skill:focus {
+  outline: none;
+}
+
+
+
 /* ----- ANIMATION ----- */
 
 @keyframes movement {
