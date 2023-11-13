@@ -4,6 +4,7 @@ import { HashRouter, Routes, Route } from "react-router-dom"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Projects from "./pages/Projects"
+import ProjectDetail from "./pages/ProjectDetail"
 import Blogs from "./pages/Blogs"
 import BlogDetail from "./pages/BlogDetail"
 import Chinese from "./pages/Chinese"
@@ -22,6 +23,7 @@ function App() {
             <Route path="/" element={<Home mode={dark} />} />
             <Route path="/about" element={<About mode={dark} />} />
             <Route path="/projects" element={<Projects mode={dark} />} />
+            <Route path="/projects/:id" element={<ProjectDetail mode={dark} />} />
             <Route path="/blogs" element={<Blogs mode={dark} />} />
             <Route path="/blogs/:id" element={<BlogDetail mode={dark} />} />
             <Route path="/chinese" element={<Chinese mode={dark} />} />
