@@ -6,7 +6,8 @@
 .chinese-container,
 .home-container,
 .project-detail-container,
-.projects-container {
+.projects-container,
+footer, header {
   padding: 0.5rem; /* margin strange behavior */
 }
 
@@ -14,6 +15,11 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 0.325rem 1rem;
+}
+
+.bi-list {
+  font-size: 2rem;
+  /* font-weight: 900; */
 }
 
 /* ----- DARK INTERFACE ----- */
@@ -71,14 +77,32 @@ p {
   margin: 2rem;
 }
 
+/* ----- MENU ----- */
+
+.menu {
+  background-color: transparent;
+  border: none;
+}
+
+.menu-item {
+  font-weight: 600;
+  margin: 0.5rem;
+}
+
+.line {
+  height: 4px;
+  width: 28px;
+  background-color: #918E9B;
+  margin: 4px;
+  border-radius: 5px;
+}
+
 /* ----- HEADER ----- */
 
 header {
   box-shadow: 0 0 5px #999;
   padding: 0 1rem 1rem;
   text-align: center;
-  /* position: fixed;
-  width: 100%; */
 }
 
 header a {
@@ -141,23 +165,23 @@ header .theme {
 header.dark .site-main, header.dark p { color: #fdfdfd; }
 header.dark p:not(.bold) { color: #918E9B; }
 
-header nav a {
+.header--right nav a {
   box-shadow: inset 0 0 0 0 #2C5364;
   color: #2C5364;
   transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
 }
 
-header nav a:hover {
+.header--right nav a:hover {
   box-shadow: inset 100px 0 0 0 #2C5364;
   color: white;
 }
 
-header.dark nav a {
+header.dark .header--right nav a {
   box-shadow: inset 0 0 0 0 #F7FFF7;
   color: #F7FFF7;
 }
 
-header.dark nav a:hover {
+header.dark .header--right nav a:hover {
   box-shadow: inset 100px 0 0 0 #F7FFF7;
   color: #21222A;
 }
@@ -365,29 +389,42 @@ footer i { font-size: 1.5rem; }
 /* ----- MEDIA QUERIES ----- */
 
 @media (min-width: 415px) {
-  header {
+  header { padding: 0; }
+  header .center-container {
       height: 60px;
       display: flex;
       align-items: center;
-      padding: 1rem;
-  }
-  
-  header .site-main {
-      margin-right: auto;
-      font-size: 1.5rem;
   }
 
-  footer {
-      padding: 1rem 4rem 1rem 2.5rem;
-      display: flex;
+  header .header--left {
+    width: 30%;
+    max-width: 240px;
+    text-align: left;
   }
+
+  header .header--right {
+    width: 70%;
+    max-width: 560px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  header .site-main { font-size: 1.5rem; }
+  header .theme { margin: 0; }
+
+  footer .center-container { display: flex; }
   
   footer .footer--left {
-      width: 50%;
-      max-width: 400px;
+      width: 60%;
+      max-width: 480px;
       margin-right: auto;
   }
-  
+
+  footer .footer--right {
+      width: 20%;
+  }
+
   footer .contact-container {
       display: block;
       margin-top: 45px;
