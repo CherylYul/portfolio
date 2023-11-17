@@ -1,8 +1,8 @@
 import React from "react"
-import data from "../assets/data"
+import chinesedata from "../assets/data/chinese"
 
 export default function Chinese(props) {
-    const lectureElements = data.map(lec => 
+    const lectureElements = chinesedata.map(lec => 
         <div className={`lecture ${lec.current ? "on" : "" }`} key={lec.id}>
             <h3>{lec.title}</h3>
             <p>Topics: {lec.topic}</p>
@@ -17,17 +17,19 @@ export default function Chinese(props) {
     )
     return (
         <div className={`chinese-container ${props.mode ? "dark" : ""}`}>
-            <h1>Basic Chinese</h1>  
-            <p>
-                This course will provide new learners all basic necessary tools which will boost 
-                your future self-taught journey. The course will give you fundamental approaches 
-                and mindsets about how to study and be familiar with Chinese characters, why have 
-                to know pinyin tables and Chinese radical. You will also learn common daily used 
-                conversations (self-introduction, weather conversations, daily shopping, describe 
-                things, etc) and actually get hand on practicing your own Chinese expression.
-            </p>
-            <div className="lecture-container">
-                {lectureElements}
+            <div className="center-container">
+                <h1>Basic Chinese</h1>  
+                <p>
+                    This course will provide new learners all basic necessary tools which will boost 
+                    your future self-taught journey. The course will give you fundamental approaches 
+                    and mindsets about how to study and be familiar with Chinese characters, why have 
+                    to know pinyin tables and Chinese radical. You will also learn common daily used 
+                    conversations (self-introduction, weather conversations, daily shopping, describe 
+                    things, etc) and actually get hand on practicing your own Chinese expression.
+                </p>
+                <div className="lecture-container">
+                    {lectureElements}
+                </div>
             </div>
         </div>
     )

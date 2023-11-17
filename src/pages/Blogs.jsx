@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, useSearchParams} from "react-router-dom"
-import blogsList from "../assets/blogsList"
+import blogdata from "../assets/data/blog"
 
 export default function Blogs(props) {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -18,10 +18,10 @@ export default function Blogs(props) {
     }
 
     const displayedBlogs = tagFilter ? 
-        blogsList.filter(blog => blog.tags.includes(tagFilter)) : blogsList
+        blogdata.filter(blog => blog.tags.includes(tagFilter)) : blogdata
 
     const blogElements = displayedBlogs.map(blog => 
-        <div key={blog.id} className="post-container">
+        <div key={blog.id} className="post-el">
             <small className="post-date">{blog.date}</small>
             <Link 
                 to={`/blogs/${blog.id}`} 
@@ -39,10 +39,10 @@ export default function Blogs(props) {
     )
 
     return (
-        <div className={props.mode ? "dark" : ""}>
-            <div className={`blog-list-container ${props.mode ? "dark" : ""}`}>
-                <h3 className="blog-filter bold">Filter:</h3>
-                <div className="blog-list-filter-buttons">
+        <div className={`${props.mode ? "dark" : ""} blogs-container`}>
+            <div className="center-container">
+                <h3 className="blog-filter bold">Category:</h3>
+                <div className="filter-buttons">
                     <button 
                         onClick={() => handleFilterChange("tag", "life")}
                         className={`blog-type ${tagFilter === "life" ? "selected": ""}`}>
