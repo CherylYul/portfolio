@@ -1,44 +1,105 @@
 import React from "react"
+import Menu from "../assets/Menu/Menu"
+import Dropdown from "../assets/Menu/MenuDropdown"
+import MenuItem from "../assets/Menu/MenuItem"
+import Falcon9Price from "../assets/falcon9.png"
+import Falcon9Structure from "../assets/falcon9-structure.svg"
 
 export default function SpaceX() {
     return (
         <div className="content-container">
+            <div className="proj-header">
+                <h1 className="proj-title">SpaceX first landing prediction</h1>
+                <div className="proj-sub">
+                    <small>Mar 9 2023 • YulCheryl</small>
+                    <a className="proj-github-link cfd9de-border"
+                    href="https://github.com/CherylYul/spacex-first-stage-landing-prediction">
+                        <i className="bi bi-github"></i>
+                        View repository
+                        <i class="bi bi-box-arrow-up-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div className="proj-summary quote">
+                <h3>Summary</h3>
+                <p>SpaceX offers competitive price for its Falcon 9, only 67 million dollars comparing 
+                to other providers (more than 150 million dollars each). This advantage price can be 
+                obtained by reusing the first stage of rocket. Hence, this project aims to predict 
+                the successful rate of landing the first stage after launching rocket.</p>
+                <p>The results obtained was up to 91.57% with the features used in analysis and 
+                predictions are payload mass, orbit, serial, grid fins, legs, blocks, and landing pad. 
+                We then can apply the explored data and predicted results for future rocket launch 
+                projects, for new providers who want to step into rocket space market as an useful 
+                information, or for venture capitalists to make further decision in their investment.</p>
+            </div>
+
+            <Menu title="Table of contents">
+                <Dropdown>
+                    <MenuItem>Introduction</MenuItem>
+                    <MenuItem>Methodology</MenuItem>
+                    <MenuItem>Result</MenuItem>
+                </Dropdown>
+            </Menu>
+
+            <h2>Part I: Understanding Problems</h2>
             <p>Space has mostly been dominated by governments for the last 50 and 60 years ago until 
             billionaires step into and gain some success in space. As space is becoming a potential 
             source of value for businesses across a wide variety of sectors, including agriculture, 
-            telecommunications, pharmaceuticals, and so on. Many companies are hoping to make it not 
+            telecommunications, pharmaceuticals, etc, many space companies are hoping to make it not 
             only just possible but also affordable to put objects into orbit. As a result, a race against 
             time to reduce the cost of launching rockets is happening.</p>
             
             <p>Virgin Galactic is providing suborbital spaceflights, Rocket Lab provides Electronic 
             and Neutron rockets, Blue Origin manufactures sub-orbital and orbital reusable rockets, 
             SpaceX sends spacecraft to the International Space Station and StarLink to provide satellite 
-            Internet access. SpaceX is the clear leader with its Falcon 9, Falcon Heavy and Falcon 
-            Super Heavy rockets. </p>
-            
-            <p>At first, SpaceX’s cost of launching rockets was expensive. However, if the first stage 
-            of rocket launches successfully, the cost will decrease with only 67 million dollars, that’s 
-            the price of Falcon 9 rocket launches, other providers cost upwards of 165 million dollars 
-            each, much of the savings is because SpaceX can reuse the first stage.</p>
+            Internet access. Among them, SpaceX is the clear leader with its Falcon 9, Falcon Heavy and 
+            Falcon Super Heavy rockets. </p>
 
-            <h2>Problems</h2>
+            <div className="image-container">
+                <img src={Falcon9Price} style={{width: "100%"}}
+                    alt="capabilities and services of Falcon9 from spacex.com" />
+                <p className="italic center">
+                    Capabilities and services of Falcon 9 from spacex.com
+                </p>
+            </div>
 
-            <p>The payload is enclosed in the fairings. Stage two, or the second stage, helps 
-            bring the payload to orbit, but most of the work is done by the first stage and is much 
-            larger, more expensive than the second stage. Unlike other rocket providers, SpaceX's 
-            Falcon 9 can recover the first stage. Sometimes the first stage does not land. Sometimes 
-            it will crash. Other times, Space X will sacrifice the first stage due to the mission 
-            parameters like payload, orbit, and customer.</p>
+            <p>Falcon 9 is a two-stage launch vehicle powered including first stage, interstage, second 
+            stage and fairings. The first stage is matched with the second stage by the interstage. After 
+            the rocket launches, the stage seperation happens when the falcon has left the Earth's 
+            atmosphere, the first stage engines shut down, boostback and entry burn to make it landed back 
+            on the ground. Sometimes, the first stage landed successfully which helps decrease the cost of
+            everytime launching rocket (67 million dollars) by reusing the first stage. Other times, it 
+            would crash or fail in landing.</p>
 
-            <p>Therefore, if we can determine whether the first stage will land or not, we can determine 
-            the cost of a launch, this project aims to accurately predict the likelihood of first stage 
-            landing.</p>
+            <div className="image-container">
+                <img src={Falcon9Structure} style={{width: "60%"}}
+                    alt="Falcon 9 structure of first stage and second stage" />
+                <p className="italic center">
+                    The structure of Falcon 9 including first stage and second stage 
+                    - picture from Finbarr Sheehy
+                </p>
+            </div>
 
-            <h2>Methodology</h2>
+            <p>With a high pressure released from the first stage, the second stage continue to fly and
+            then move to the fairing and payload seperation (payload is enclosed in the fairings). Stage 
+            two, or the second stage, helps bring the payload to orbit, but most of the work is done by 
+            the first stage which is much larger and more expensive than the second stage. Therefore, the 
+            act of recovering the first stage by making sure it will land successfully is more and more
+            crucial.</p>
+
+            <p>If we can accurately predict the likelihood of whether the first stage will land or not, 
+            and understand the impact of each feature contributing to the launching mission, the market 
+            space will be improved significantly as the cost of satellites and other objects sended to 
+            orbit will be lower.</p>
+
+            <h2>Part II: Data Approachs</h2>
             
             <p>The data are collected from <a href="https://github.com/r-spacex/SpaceX-API">SpaceX-API</a> 
             and <a href="https://en.wikipedia.org/wiki/List_of_Falcon_9_and_Falcon_Heavy_launches?utm_medium=Exinfluencer&utm_source=Exinfluencer&utm_content=000026UJ&utm_term=10006555&utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDS0321ENSkillsNetwork26802033-2022-01-01">
             List of Falcon 9 and Falcon Heavy on Wikipedia</a> by using BeautifulSoup and requests.</p>
+
+            <h3>Collecting data from SpaceX API</h3>
 
             <p>After collecting, we convert data into dataframe and handle missing value, invalid data, 
             turn data types into right format. Next, we explore data by 3 methods. Firstly, utilize 
@@ -107,7 +168,7 @@ export default function SpaceX() {
             earth orbit. Iridium focuses on PO orbit launch with average payload mass is about 9600 kgs, 
             SES focuses on GTO orbits with average payload mass is 4600kgs.</p>
 
-            <h4>Booster version</h4>
+            <h4 id="part_1_introduction">Booster version</h4>
 
             <p>Falcon 9 has 5 booster version: v1.0, v1.1, FT, Block 4 and Block 5. Block 5 accounted for 
             most of the flights, it is also the most active rockets of SpaceX (152 flights), Block 5 can 
@@ -159,6 +220,10 @@ export default function SpaceX() {
             neighbors, although decision tree has the highest score (94%), but it is overfitting leads 
             to low test score (69%). Therefore, support vector machine appear to be better model which 
             it has high score (92%) and the test score also high (92%).</p>
+
+            <p>This is the capstone project I finished from IBM Data Science Professional Course. I think 
+            it provided necessary skills and overall knowledge from visualizing data to building machine
+            leaning models and pipelines.</p>
         </div>
     )
 }
