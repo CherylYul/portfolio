@@ -3,7 +3,17 @@ import Menu from "../assets/Menu/Menu"
 import Dropdown from "../assets/Menu/MenuDropdown"
 import MenuItem from "../assets/Menu/MenuItem"
 import Falcon9Price from "../assets/falcon9.png"
-import Falcon9Structure from "../assets/falcon9-structure.svg"
+import Falcon9Structure from "../assets/falcon9-structure.png"
+import Falcon9Droneship from "../assets/falcon9-droneship.jpg"
+import Launchsite1 from "../assets/launchsite-1.png"
+import Launchsite2 from "../assets/launchsite-2.png"
+import Customer1 from "../assets/customer-1.png"
+import Booster1 from "../assets/booster-1.png"
+import Boosterlanding1 from "../assets/boosterlanding-1.png"
+import Relationship1 from "../assets/relationship-1.png"
+import Relationship2 from "../assets/relationship-2.png"
+import Relationship3 from "../assets/relationship-3.png"
+import Prediction1 from "../assets/prediction-1.png"
 
 export default function SpaceX() {
     return (
@@ -21,7 +31,7 @@ export default function SpaceX() {
                 </div>
             </div>
 
-            <div className="proj-summary quote">
+            <div className="proj-summary quote-container">
                 <h3>Summary</h3>
                 <p>SpaceX offers competitive price for its Falcon 9, only 67 million dollars comparing 
                 to other providers (more than 150 million dollars each). This advantage price can be 
@@ -34,11 +44,27 @@ export default function SpaceX() {
                 information, or for venture capitalists to make further decision in their investment.</p>
             </div>
 
+            <p>SpaceX first landing prediction is the capstone project of <a href="https://www.coursera.org/professional-certificates/ibm-data-science">IBM Data Science Professional Course</a> which 
+            I have finished recently. This course provides fundamental and essential skills with overall 
+            knowledge about data science from visualizing data to building ML pipeline models. If you are 
+            finding the way to step into data science field or to gain an exhaustive overview of it, then 
+            this course is not the bad choice.</p>
+
             <Menu title="Table of contents">
                 <Dropdown>
-                    <MenuItem>Introduction</MenuItem>
-                    <MenuItem>Methodology</MenuItem>
-                    <MenuItem>Result</MenuItem>
+                    <MenuItem>Part I: Understanding Problems</MenuItem>
+                    <MenuItem>Part II: Data Approachs</MenuItem>
+                    <MenuItem>----Collecting data from SpaceX API</MenuItem>
+                    <MenuItem>----Collecting data from Wikipedia</MenuItem>
+                    <MenuItem>Part III: Exploring Data</MenuItem>
+                    <MenuItem>----1. How does launch site affect landing status?</MenuItem>
+                    <MenuItem>----2. The common customers of SpaceX</MenuItem>
+                    <MenuItem>----3. Which does the version of booster have the highest successful rate?</MenuItem>
+                    <MenuItem>----4. Which type of booster landing has a high success rate?</MenuItem>
+                    <MenuItem>----5. Finding the relationships between features with landing success rate.</MenuItem>
+                    <MenuItem>Part IV: Future Launch Prediction</MenuItem>
+                    <MenuItem>Conclusion</MenuItem>
+                    <MenuItem>Resources</MenuItem>
                 </Dropdown>
             </Menu>
 
@@ -95,135 +121,492 @@ export default function SpaceX() {
 
             <h2>Part II: Data Approachs</h2>
             
-            <p>The data are collected from <a href="https://github.com/r-spacex/SpaceX-API">SpaceX-API</a> 
-            and <a href="https://en.wikipedia.org/wiki/List_of_Falcon_9_and_Falcon_Heavy_launches?utm_medium=Exinfluencer&utm_source=Exinfluencer&utm_content=000026UJ&utm_term=10006555&utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDS0321ENSkillsNetwork26802033-2022-01-01">
+            <p>The data are collected from <a href="https://github.com/r-spacex/SpaceX-API">SpaceX-API</a> and <a href="https://en.wikipedia.org/wiki/List_of_Falcon_9_and_Falcon_Heavy_launches">
             List of Falcon 9 and Falcon Heavy on Wikipedia</a> by using BeautifulSoup and requests.</p>
 
             <h3>Collecting data from SpaceX API</h3>
 
-            <p>After collecting, we convert data into dataframe and handle missing value, invalid data, 
-            turn data types into right format. Next, we explore data by 3 methods. Firstly, utilize 
-            sqlite3 library and using sql magic to do feature analysis and analyze the 2022 launches. 
-            Secondly, using seaborn and matplotlib to understand the relationships between features, 
-            for example flight number with payload mass, orbit with success rate to help us do feature 
-            extraction for further prediction. We also do launch sites analysis by using folium to 
-            visualize the location of each launch site on the map and calculate the distance from it.</p>
+            <p>1. Get the name and cost per launch in rockets path:</p>
 
-            <p>The 2 important features launch sites and payload mass also be showed on python plotly 
-            dashboard to enable others explore and manipulate data in an interactive and real-time way.
-            Finally, we use the sklearn library to standardize and split the data. The data is trained 
-            with 4 types models: logistic regression, support vector machine, decision tree classifier 
-            and k nearest neighbors classifier to find the model which has the highest accuracy.</p>
+            <div className="code-container">
+                <code>def get_rockets_data(x):</code>
+                <code className="pl-3">url = "https://api.spacexdata.com/v4/rockets/" + str(x)</code>
+                <code className="pl-3">r = requests.get(url).json()</code>
+                <code className="pl-3">return r["name"], r["cost_per_launch"]</code>
+            </div>
 
-            <h2>Results</h2>
+            <p>2. Get the latitude and longitude in launchpads path:</p>
 
-            <h4>Launch sites</h4>
+            <div className="code-container">
+                <code>def get_launchpads_data(x):</code>
+                <code className="pl-3">url = "https://api.spacexdata.com/v4/launchpads/" + str(x)</code>
+                <code className="pl-3">r = requests.get(url).json()</code>
+                <code className="pl-3">return r["full_name"], r["latitude"], r["longitude"]</code>
+            </div>
+
+            <p>3. Get customers, orbit and mass in payloads path:</p>
+
+            <div className="code-container">
+                <code>def get_payloads_data(x):</code>
+                <code className="pl-3">url = "https://api.spacexdata.com/v4/payloads/" + str(x)</code>
+                <code className="pl-3">r = requests.get(url).json()</code>
+                <code className="pl-3">return r["customers"], r["mass_kg"], r["orbit"], r["manufacturers"]</code>
+            </div>  
+
+            <p>4. Get block and serial in cores path:</p>
+
+            <div className="code-container">
+                <code>def get_cores_data(x):</code>
+                <code className="pl-3">url = "https://api.spacexdata.com/v4/cores/" + str(x)</code>
+                <code className="pl-3">r = requests.get(url).json()</code>
+                <code className="pl-3">return r["block"], r["reuse_count"], r["serial"]</code>
+            </div>
+
+            <p>5. Access the main path which contains several information of each flight:</p>
+
+            <div className="code-container">
+                <code>r = requests.get("https://api.spacexdata.com/v4/launches/past").json()</code>
+                <code>for flight in r:</code>
+                <code className="pl-3">name, cost_per_launch = get_rockets_data(flight["rocket"])</code>
+                <code className="pl-3">launch_site, latitude, longitude = get_launchpads_data(flight["launchpad"])</code>
+                <code className="pl-3">customers, mass, orbit, manufacturers = get_payloads_data(flight["payloads"][0])</code>
+                <code className="pl-3">block, reuse_count, serial = get_cores_data(flight["cores"][0]["core"])</code>
+            </div>
+
+            <h3>Collecting data from Wikipedia</h3>
+
+            <p>This time we use BeautifulSoup and access contents through CSS selector.</p>
+            <p>1. Collect the columns name, and get rid of the br and sup tag: </p>
+
+            <div className="code-container">
+                <code>url = "https://en.wikipedia.org/wiki/List_of_Falcon_9_and_Falcon_Heavy_launches"</code>
+                <code>r = requests.get(url)</code>
+                <code>html_soup = BeautifulSoup(r.text, "html.parser")</code>
+                <code>tables = html_soup.select("table.wikitable{`>`}tbody")</code>
+                <code>columns = []</code>
+                <code>for column in tables[0].find_all("th", scope="col"):</code>
+                <code className="pl-3">if column.sup:</code>
+                <code className="pl-6">column.sup.extract()</code>
+                <code className="pl-3">if column.br:</code>
+                <code className="pl-6">column.br.extract()</code>
+                <code className="pl-3">column_name = column.get_text(strip=True).replace(",", "").replace(" ", "")</code>
+                <code className="pl-3">columns.append(column_name)</code>
+            </div>
+
+            <p>2. Handle the date and mass cell by using unicodedata and regex:</p>
+
+            <div className="code-container">
+                <code>def get_date(cell):</code>
+                <code className="pl-3">datetime = cell.get_text(strip=True)</code>
+                <code className="pl-3">datetime = re.search("[^,]+", datetime)</code>
+                <code className="pl-3">datetime = cell.get_text(strip=True)</code>
+            </div>
+
+            <div className="code-container">
+                <code>def get_mass(cell)</code>
+                <code className="pl-3">mass = unicodedata.normalize("NFKD", cell.text).strip()</code>
+                <code className="pl-3">if mass:</code>
+                <code className="pl-6">mass.find("kg")</code>
+                <code className="pl-6">new_mass = mass[0 : mass.find("kg") + 2]</code>
+                <code className="pl-3">else:</code>
+                <code className="pl-6">new_mass = 0</code>
+                <code className="pl-3">return new_mass</code>
+            </div>
+
+            <p>3. Collect the data: </p>
+
+            <div className="code-container">    
+                <code>r = requests.get(url)</code>
+                <code>html_soup = BeautifulSoup(r.text, "html.parser")</code>
+                <code>rows = html_soup.select("table.wikitable tr[id]")</code>
+                <code>for row in rows:</code>
+                <code className="pl-3">if row.find("th", scope="row"):</code>
+                <code className="pl-6"> ... scrape all data to dataframe ... </code>
+            </div>
+
+            <p>After collecting, we convert data into dataframe and handle missing value, invalid data by
+            using pandas and numpy, finally turn data into the right types and format.</p>
+            
+            <h2>Part III: Exploring Data</h2>
+            
+            <p>We explore data by 3 methods. Firstly, utilize sqlite3 library and using sql magic to 
+            do feature analysis and analyze the 2022 launches. Secondly, using seaborn and matplotlib 
+            to understand the relationships between features, for example flight number with payload mass, 
+            orbit with success rate to help us do feature extraction for further prediction. We also 
+            conduct launch sites analysis by using folium to visualize the location of each launch site 
+            on the map and calculate the distance from it.</p>
+
+            <h3 >1. How does launch site affect landing status?</h3>
 
             <p>SpaceX has 3 main launch sites CCSFS SLC-40, total 115 flights, KSC LC-39A, 57 flights, 
             VSFB SLC-4E, 36 flights. Because CCSFS SLC-40 used most for R&D development, this site 
-            has high failure rate, the highest success rate was KSC 91.22% (from 2010-2022).</p>
+            has high failure rate, the site that has highest successful rate was KSC 91.22% 
+            (from 2010-2022).</p>
 
-            <p>Most ocean landing was in CCSFS (5 flights) success rate 80%, VSFB also has 2 flights, 
-            KSC don’t have ocean landing but it has highest success rate of drone ship landing. Almost 
-            ground pad landing was success, we only have 1 failure on CCSFS site.</p>
+            <div className="note-container">
+                <p>CCSFS: Cape Canaveral Space Force Station</p>
+                <p>VSFB: Vandenberg Space Force Base, previously Vandenberg Air Force Base (VAFB)</p>
+                <p>KSC: John F.Kennedy Space Center</p>
+            </div>
 
-            <p>Because CCSFS SLC-40 is the site has most of launches, it is reasonable that it has 
-            various orbit launches which the other sites haven’t tried yet. However, the left 2 sites 
-            also have its special, KSC has 1 sub-orbital and VSFB has 1 Heliocentric orbit which CCSFS 
-            doesn’t have. When we go deeper, we can observe that though VSFB has fewest launches, but 
-            it also has its owns special orbit, almost SSO and PO orbit are from VSFB.</p>
+            <div className="code-container">    
+                <code>%%sql</code>
+                <code>select launchsite, landingstatus, count(launchsite) as LaunchTotal</code>
+                <code>from spacexlaunch</code>
+                <code>group by launchsite, landingstatus</code>
+            </div>
 
-            <p>From folium visualization, we can see that VAFB launch site is located on the west coast, 
-            CCSFS and KSC are near together which are located on the east coast, NASA Johnson Space 
-            Center are in the middle of 2 coast, located near Houston, Texas.</p>
+            <div className="image-container">
+                <img src={Launchsite1} style={{width: "45%"}}
+                    alt="The number of success and failure of first stage landing in SpaceX 3 
+                    launch sites - CCSFS SLC-40, KSC LC-39A, VSFB SLC-4E" />
+                <p className="italic center">
+                    The number of success and failure of first stage landing in SpaceX 3 launch sites -
+                    CCSFS SLC-40, KSC LC-39A, VSFB SLC-4E
+                </p>
+            </div>
+            
+            <p>Most of ocean landing happened in CCSFS (5 flights) with the successful rate of 80%, 
+            VSFB also had 2 flights landing on the ocean, KSC didn't have ocean landing but it has 
+            highest successful rate of drone ship landing, and we only have one failure of landing 
+            on ground in CCSFS site.</p>
 
-            <p>All launch sites are in proximity to equator. This makes sense as it takes less fuel to 
-            get into space from the equator due to the physics of Earth's rotation. The launch sites in 
-            close proximity to the coast are also logical for safety reasons.</p>
+            <div className="image-container">
+                <img src={Falcon9Droneship} style={{width: "100%"}}
+                    alt="SpaceX's drone ship landing - A Shortfall of Gravitas - Amy Thompson" />
+                <p className="italic center">
+                    SpaceX's drone ship landing "A Shortfall of Gravitas", 
+                    after its first successful Falcon 9 rocket landing. 
+                    (Image credit: Amy Thompson)
+                </p>
+            </div>
+
+            <p>CCSFS SLC-40 is the site which had most launches, so it's reasonable that it included 
+            various orbit launches that the other sites haven’t tried yet. However, the remainders 
+            also had its special features, KSC had one sub-orbital and VSFB had one Heliocentric orbit 
+            which CCSFS didn't have yet, other than that, when we look carefully, we can observe that 
+            the large proportion of SSO and PO orbits were particularly from VSFB launch sites.</p>
+
+            <div className="note-container">
+                <p>LEO: Low Earth Orbit, an orbit around Earth with a period of 128 minutes or less, 
+                altitude 2000 km, most of artificial objects in outer space are LEO. ISS are the largest 
+                international Space Station in LEO</p>
+                <p>MEO: Medium Earth Orbit, an altitude above a low Earth orbit (LEO) and below a high 
+                Earth orbit (HEO) – between 2,000 and 35,786 km</p>
+                <p>GTO: Geosynchronous Orbit, a high Earth orbit that allows satellites to match Earth's 
+                rotation. Located at 22,236 miles (35,786 kilometers) above Earth's equator, this position 
+                is a valuable spot for monitoring weather, communications and surveillance.</p>
+                <p>HEO: High Earth Orbit, a geocentric orbit with an altitude entirely above that of a 
+                geosynchronous orbit (35,786 kilometres)</p>
+                <p>Heliocentric: an orbit around the barycenter of the Solar System, which is usually 
+                located within or very near the surface of the Sun</p>
+                <p>PO: Polar Orbit, a satellite passes above or nearly above both poles of the body 
+                being orbited</p>
+                <p>SSO: Sun-synchronous Orbit, a heliosynchronous orbit is a nearly polar orbit around 
+                a planet, in which the satellite passes over any given point of the planet's surface at 
+                the same local mean solar time</p>
+                <p>BLT: Ballistic Capture, a low energy method for a spacecraft to achieve an orbit 
+                around a distant planet or moon with no fuel required to go into orbit</p>
+                <p>Sub-orbital: a spaceflight in which the spacecraft reaches outer space, but its 
+                trajectory intersects the atmosphere or surface of the gravitating body from which it 
+                was launched, so that it will not complete one orbital revolution (it does not become 
+                an artificial satellite)</p>
+                <p>ES-L1: Sun-Earth-L1, the satellite launched into orbit toward Sun Earth Lagrange L1 
+                point</p>
+            </div>
+            
+            <p>When using folium library to visualize the location of launch sites, the map shows that 
+            VAFB is located near the west coast of California, CCSFS is at a short distance from KSC which
+            is just 5km away, their location is on the east coast of Florida. NASA Johnson Space Center is 
+            between the two states located near Houston, Texas.</p>
+
+            <div className="code-container">    
+                <code>launch_site_info = spacex_df[['launch site', 'longitude', 'latitude']]</code>
+                <code>launch_site_info = launch_site_info.groupby('launch site', as_index=False).first()</code>
+                <code>for index, row in launch_site_info.iterrows():</code>
+                <code className="pl-3">coordinate = [row[2], row[1]]</code>
+                <code className="pl-3">launchsite = row[0]</code>
+                <code className="pl-3">circle = folium.Circle(coordinate, radius=1000, color='#69140E', fill=True)</code>
+                <code className="pl-3">circle = circle.add_child(folium.Popup(launchsite))</code>
+                <code className="pl-3">marker = folium.map.Marker(</code>
+                <code className="pl-6">coordinate,</code>
+                <code className="pl-6">icon = DivIcon(icon_size=(20,20),</code>
+                <code className="pl-9">icon_anchor=(0,0),</code>
+                <code className="pl-9">{`html='<div style="color: #69140E; font-size: 12"><b>%s</b></div>' % launchsite)`}</code>
+                <code className="pl-3">)</code> 
+                <code className="pl-3">site_map.add_child(circle)</code>
+                <code className="pl-3">site_map.add_child(marker)</code>
+            </div>
+
+            <div className="image-container">
+                <img src={Launchsite2} style={{width: "100%"}}
+                    alt="The presentation of SpaceX's launch sites map by using Folium library" />
+                <p className="italic center">
+                    The presentation of SpaceX's launch sites map by using Folium library
+                </p>
+            </div>
 
             <p>Launch site are in close proximity to coastline, which can help rocket fly over the ocean 
             during launch, crew also has option to abort launch and attempt water landing, and finally 
             minimize the risk from falling debris. Also launch site need to near the railway and highway 
             which allows easily transport for heavy cargo and property, but it is far from city to 
             restrict the danger of launching rockets to population dense areas.</p>
-    
-            <h4>SpaceX customers</h4>
 
-            <p>It can be seen that top SpaceX customers are NASA, SpaceX, SES and Iridium communications. 
-            SES is a Luxembourgish leading satellite telecommunications network provider with over 70 
-            satellites in two different orbits. Iridium operates the Iridium satellite constellation, a 
-            system of 66 active satellites and nine in-orbit spares used for worldwide voice and data 
-            communication from handheld satellite phones, satellite messenger communication devices and 
-            integrated transceivers.</p> 
+            <p>Another feature is easily noticeable that all launch sites are in proximity to equator. 
+            This makes sense as it takes less fuel to get into space from the equator due to the physics 
+            of Earth's rotation.</p>
+
+            <h3 >2. The common customers of SpaceX</h3>
+
+            <p>The statistics show that top SpaceX customers are NASA, SpaceX, SES and Iridium 
+            communications. We have total 46 flights which are related to NASA, in which NASA(CRS) 
+            accounted for the most 26 flights but fewer total payload 71326 kgs comparing to NASA(CTS) 
+            6 flights but total payload is 77050 kgs. The average payload mass of each flights of NASA(CRS) 
+            is 2743. Most of NASA flights was in CRS projects, it is a contract solution to deliver cargo 
+            and supplies to the International Space Station (ISS).</p>
             
-            <p>About NASA, the National Aeronautics and Space Administration is an independent agency 
-            of the U.S. federal government responsible for the civil space program, aeronautics research, 
-            and space research. Most of NASA flights was in CRS projects, it is a contract solution to 
-            deliver cargo and supplies to the International Space Station (ISS).</p>
+            <div className="note-container">
+                <p>SES: Luxembourgish leading satellite telecommunications network provider with over 70 
+                satellites in two different orbits.</p>
+                <p>Iridium communications: Iridium operates the Iridium satellite constellation, a 
+                system of 66 active satellites and nine in-orbit spares used for worldwide voice and data 
+                communication from handheld satellite phones, satellite messenger communication devices 
+                and integrated transceivers.</p>
+                <p>NASA: the National Aeronautics and Space Administration which is an independent agency 
+                of the U.S. federal government responsible for the civil space program, aeronautics 
+                research, and space research</p>
+            </div>
 
-            <p>We have total 46 flights which are related to NASA, in which NASA(CRS) accounted for the 
-            most 26 flights but fewer total payload 71326 kgs, compared to NASA(CTS) 6 flights but total 
-            payload is 77050 kgs, average payload mass of each flights of NASA(CRS) is 2743, most of NASA 
-            launch was LEO orbit with 70% success rate. It is reasonable because the ISS was in the low 
-            earth orbit. Iridium focuses on PO orbit launch with average payload mass is about 9600 kgs, 
-            SES focuses on GTO orbits with average payload mass is 4600kgs.</p>
+            <p>LEO orbit is the main trajectory that NASA frequently sends satellite into space with the 
+            high successful rate of 70%. Others, Iridium, SES focuses on PO, and GTO orbit launchs with 
+            the average payload mass is around 9600kg, 4600kg respectively.</p>
 
-            <h4 id="part_1_introduction">Booster version</h4>
+            <div className="code-container">    
+                <code>%%sql</code>
+                <code>select customer, count(customer) as TotalFlight</code>
+                <code>from spacexlaunch</code>
+                <code>group by customer</code>
+                <code>order by TotalFlight desc</code>
+                <code>limit 5</code>
+            </div>
+
+            <div className="image-container">
+                <img src={Customer1} style={{width: "40%"}}
+                    alt="The top customers of SpaceX - SpaceX, NASA, SES, Iridium Communications" />
+                <p className="italic center">
+                    The top customers of SpaceX - SpaceX, NASA, SES, Iridium Communications
+                </p>
+            </div>
+
+            <h3 >3. Which does the version of booster have the highest successful rate?</h3>
 
             <p>Falcon 9 has 5 booster version: v1.0, v1.1, FT, Block 4 and Block 5. Block 5 accounted for 
-            most of the flights, it is also the most active rockets of SpaceX (152 flights), Block 5 can 
-            carried from 325kgs to 17400kgs with high average payload mass 10625kgs and high success rate 
-            94%.</p>
+            most of the flights, it is also the most active rockets of SpaceX which already had 152 flights, 
+            Block 5 can carried from 325kgs to 17400kgs with high average payload mass 10625kgs and high 
+            successful rate up to 94%.</p>
 
-            <p>On the other hand, v1.0 and v1.1 has high failure rate, the first version 100% failure and 
-            second version was 80% failure. The latter 2 developed rockets in Falcon 9 family are F9 B4 
-            and F9 FT is better for commercial launches, success rate is 50% and 75% respectively, but 
-            still cannot compare with Block 5.</p>
+            <p>On the other hand, v1.0 and v1.1 drew another story, the first version v1.0 didn't have 
+            any successful flight, most of the second version v1.1 was crashed. The two rockets developed 
+            afterwards in Falcon 9 family are F9 B4 and F9 FT is better for commercial launches, lifting 
+            the successful rate to 50%, 75% respectively, but it still cannot compare with F9 Block 5.</p>
 
-            <h4>Booster landing</h4>
+            <div className="code-container">    
+                <code>%%sql</code>
+                <code>select boosterversion, landingstatus, count(boosterversion) as TotalFlights</code>
+                <code>from spacexlaunch</code>
+                <code>group by boosterversion, landingstatus</code>
+            </div>
 
-            <p>If booster landing from ocean, it means landing on specific ocean region, usually for 
-            gathering test data purpose. Drone ship means land on a drone ship at sea. Ground pad, means 
-            land on a ground pad near the launch site. The first success date of ground pad is 2015-12-22 
-            (with B4, B5, FT), drone ship is 2016-04-08 (with B4, B5, FT), ocean is 2014-04-18 (with FT & 
-            v1.1).</p>
+            <div className="image-container">
+                <img src={Booster1} style={{width: "50%"}}
+                    alt="The number of successful and failure flights of SpaceX Falcon 9 family " />
+                <p className="italic center">
+                    The number of successful and failure flights of SpaceX Falcon 9 family 
+                </p>
+            </div>
 
-            <h4>Orbit</h4>
+            <h3>4. Which type of booster landing has a high success rate?</h3>
 
-            <p>SpaceX focuses on VLEO, GTO, ISS, LEO, PO, SSO, MEO. The highest success rate was VLEO 
-                (94.8%), SSO (91.7%), LEO (81.25%). The lowest are GTO (55.9%).</p>
+            <p>Drone ship was the central landing method that SpaceX focus on (total 145 flights) with
+            the success rate of 93.79%.</p>
 
-            <p>SpaceX also has flights from 1-2 with ES-L1, GEO, GEO, TLI and SO.</p>
+            <div className="note-container">
+                <p>Controlled (ocean): the ocean test controlled descent, for the sole purpose of 
+                gathering test data, such boosters were destroyed at sea. </p>
+                <p>Uncontrolled (ocean): failure test, ocean touchdown control failed.</p>
+                <p>Drone ship: land on a drone ship at sea</p>
+                <p>Ground pad: land on a ground pad near the launch site</p>
+                <p>Failure parachute: attempt to recover the first stage by parachuting it into the ocean 
+                but fail</p>
+            </div>
 
-            <h4>Relationships</h4>
+            <div className="code-container">    
+                <code>%%sql</code>
+                <code>select boosterlanding, count(boosterlanding) as LaunchTotal</code>
+                <code>from spacexlaunch</code>
+                <code>group by boosterlanding</code>
+            </div>
 
-            <p>When flight number increase, first stage tend to land successfully. Most of the flights 
-            after 100 are success. However, if payload mass increase the less like the first stage 
-            returns. Visualization shows that with payload mass over 8000 kgs, flight launches are 
-            divided into 3 launch sites with high success rate, but in below 8000 kgs, flight failure 
-            focus on CCSFS.</p>
+            <div className="image-container">
+                <img src={Boosterlanding1} style={{width: "40%"}}
+                    alt="The number of successful and failure flights of SpaceX based on booster landing" />
+                <p className="italic center">
+                    The number of successful and failure flights of SpaceX based on booster landing
+                </p>
+            </div>
 
-            <p>In MEO and LEO orbit, the success appears related to number of flights, on the other hand, 
-            there seems to be no relationship between flight number when in GTO and VLEO orbit. Heavy 
-            payload has negative influence on GTO, positive on LEO and ISS, PO.</p>
+            <h3>5. Finding the relationships between features with landing success rate.</h3>
 
+            <p>When the flight number increase, there is a tendency for first stage to land successfully. 
+            The figures give the evidence that almost the flights number which is after 100 were launched
+            without failing. However, if there is a rise in the mass of payload, the first stage will be 
+            less likely to safely landed. Visualization shows that payload mass below 16000 kgs is easier 
+            to gain success.</p>
 
-            <h4>2022 launches</h4>
+            <div className="image-container">
+                <img src={Relationship1} style={{width: "100%"}}
+                    alt="The relationship between flight number and payload mass" />
+                <p className="italic center">
+                    The relationship between flight number and payload mass
+                </p>
+            </div>
 
-            <p>In 2022, SpaceX executed 60 launches, each month from 4-6 launches, all launches are 
-            success, only 2 no attempt status on November for other reasons. Half of the launches was 
-            in CCSFS, they also focuses on LEO, SSO, and GTO orbit.</p>
+            <p>Different launch sites have different success rate. From the beginning, SpaceX primary 
+            launch site was in CCSFS, then during the time of launching flight number 30 to 50, SpaceX 
+            moved to VSFB and KSC launch site, there is only VSFB have 100% success rate at that time. 
+            Since the flight number 130, SpaceX has equally divided the number of launches into three 
+            locations.</p>
 
-            <h4>Predictions</h4>
+            <div className="image-container">
+                <img src={Relationship2} style={{width: "100%"}}
+                    alt="The relationship between flight number and launch sites" />
+                <p className="italic center">
+                    The relationship between flight number and launch sites
+                </p>
+            </div>
 
-            <p>For 4 models, logistic regression, support vector machine, decision tree and k-nearest 
-            neighbors, although decision tree has the highest score (94%), but it is overfitting leads 
-            to low test score (69%). Therefore, support vector machine appear to be better model which 
-            it has high score (92%) and the test score also high (92%).</p>
+            <p>Next, we examine the ralationship between flight number and orbit. In VLEO, MEO, and LEO 
+            orbit, the higher the number of flights, the more likely the first stage landed safely. On 
+            the other hand, there seems to be no relationship between flight number with in GTO orbit.</p>
 
-            <p>This is the capstone project I finished from IBM Data Science Professional Course. I think 
-            it provided necessary skills and overall knowledge from visualizing data to building machine
-            leaning models and pipelines.</p>
+            <div className="image-container">
+                <img src={Relationship3} style={{width: "100%"}}
+                    alt="The relationship between flight number and orbits" />
+                <p className="italic center">
+                    The relationship between flight number and orbits
+                </p>
+            </div>
+
+            {/* The 2 important features launch sites and payload mass also be showed on python plotly 
+            dashboard to enable others explore and manipulate data in an interactive and real-time way. */}
+
+            <h2>Part IV: Future Launch Prediction</h2>
+
+            <p>Based on the details data about launching features collected, cleaned, and explored in the 
+            previous steps, we then utilize the well-designed sklearn library to predict the success rate 
+            of the first stage landing. The process includes standardize data, and split it into train and 
+            test set with the test size 20%. </p>
+            
+            <p>1. Logistic Regression Model</p>
+
+            <div className="code-container">    
+                <code>{`parameters = {`}</code>
+                <code className="pl-3">'C': [0.01, 0.1, 1],</code>
+                <code className="pl-3">'penalty': ['l2'],</code>
+                <code className="pl-3">'solver': ['lbfgs']</code>
+                <code>{`}`}</code>
+                <code>LR = LogisticRegression()</code>
+                <code>LR_model = GridSearchCV(LR, parameters, cv=10)</code>
+                <code>LR_model.fit(x_train, y_train)</code>
+            </div>
+
+            <p>2. Support Vector Machine</p>
+
+            <div className="code-container">    
+                <code>{`parameters = {`}</code>
+                <code className="pl-3">'kernel': ['linear', 'rbf', 'poly', 'sigmoid'],</code>
+                <code className="pl-3">'C': np.logspace(-3, 3, 5),</code>
+                <code className="pl-3">'gamma': np.logspace(-3, 3, 5)</code>
+                <code>{`}`}</code>
+                <code>SVM = SVC()</code>
+                <code>SVM_model = GridSearchCV(SVM, parameters, cv=10)</code>
+                <code>SVM_model.fit(x_train, y_train)</code>
+            </div>
+
+            <p>3. Decision Tree</p>
+
+            <div className="code-container">    
+                <code>{`parameters = {`}</code>
+                <code className="pl-3">'criterion': ['gini', 'entropy'],</code>
+                <code className="pl-3">'splitter': ['best', 'random'],</code>
+                <code className="pl-3">'max_depth': [2*n for n in range(1,10)],</code>
+                <code className="pl-3">'max_features': ['auto', 'sqrt'],</code>
+                <code className="pl-3">'min_samples_leaf': [1,2,4],</code>
+                <code className="pl-3">'min_samples_split': [2,5,10]</code>
+                <code>{`}`}</code>
+                <code>tree = DecisionTreeClassifier()</code>
+                <code>tree_model = GridSearchCV(tree, parameters, cv=10)</code>
+                <code>tree_model.fit(x_train, y_train)</code>
+            </div>
+
+            <p>4. K-nearest neighbors</p>
+
+            <div className="code-container">    
+                <code>{`parameters = {`}</code>
+                <code className="pl-3">"n_neighbors": [1,2,3,4,5,6,7,8,9,10],</code>
+                <code className="pl-3">"algorithm": ['auto', 'ball_tree', 'kd_tree', 'brute'],</code>
+                <code className="pl-3">"p": [1,2]</code>
+                <code>{`}`}</code>
+                <code>KNN = KNeighborsClassifier()</code>
+                <code>KNN_model = GridSearchCV(KNN, parameters, cv=10)</code>
+                <code>KNN_model.fit(x_train, y_train)</code>
+            </div>
+
+            <p>We use the hyperparameter tunning method to train data that mainly focus on 4 types of 
+            models containing logistic regression, support vector machine, decision tree classifier, and 
+            k-nearest neighbors classifier. The result was incredibly satisfying since the accurate rate 
+            of prediction can be up to 92% which are shown in the picture below.</p>
+
+            <div className="image-container">
+                <img src={Prediction1} style={{width: "100%"}}
+                    alt="The accuracy of predicting the outcome of first stage landing in the train 
+                    and test data set for 4 models (logistic regression, support vector machine, 
+                    decision tree and k-nearest neighbors)" />
+                <p className="italic center">
+                    The accuracy of predicting the outcome of first stage landing in the train 
+                    and test data set for 4 models (logistic regression, support vector machine, 
+                    decision tree and k-nearest neighbors)
+                </p>
+            </div>
+            
+            <p>Overfitting is the main reason to explain why decision tree has the highest score (94%)
+            in train set, but lowest point in test set (69%). Therefore, support vector machine appears 
+            to be the top model that has a stable score of 92% in both train and test set.</p>
+
+            <p>Overall, the number of 92% won't stop here since SpaceX has constantly improved reusable 
+            rocket with the aim of minimizing the cost of space access and providing even more affordable 
+            flight for different customers.</p>
+
+            <h2>Conclusion</h2>
+            
+            <p>It's been a lot fun reading a whole range of documents related to Falcon 9 rocket as well
+            as applying accumulated knowledge after completing the course and eventually presenting it 
+            here. There's so much about the vastness of space and so many awesome data scientists outside 
+            there that I know this report still has shortcomings, so it would be so kind if I could receive 
+            some suggestions to expand the ideas, fulfill the contents, and enhance the code.</p>
+
+            <h2>Resources</h2>
+
+            <ul className="resources">
+                <li><a href="https://www.spacex.com/media/falcon-users-guide-2021-09.pdf">SpaceX Falcon User's Guide</a></li>
+                <li><a href="https://www.spacex.com/media/Capabilities&Services.pdf">SpaceX Falcon 9 CAPABILITIES & SERVICES</a></li>
+                <li><a href="https://www.sphericalinsights.com/reports/space-exploration-market">Global Space Exploration Market</a></li>
+                <li><a href="https://github.com/r-spacex/SpaceX-API">SpaceX-API</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/List_of_Falcon_9_and_Falcon_Heavy_launches">List of Falcon 9 and Falcon Heavy Launches 2020-2023</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/List_of_Falcon_9_and_Falcon_Heavy_launches_(2010%E2%80%932019)">List of Falcon 9 and Falcon Heavy Launches 2010-2019</a></li>
+            </ul>
+
+            <div className="end"></div>
         </div>
     )
 }
