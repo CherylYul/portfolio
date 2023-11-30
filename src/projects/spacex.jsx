@@ -99,7 +99,7 @@ export default function SpaceX() {
             would crash or fail in landing.</p>
 
             <div className="image-container">
-                <img src={Falcon9Structure} className="vertical-img"
+                <img src={Falcon9Structure} className="img-60"
                     alt="Falcon 9 structure of first stage and second stage" />
                 <p className="italic center">
                     The structure of Falcon 9 including first stage and second stage 
@@ -257,7 +257,7 @@ export default function SpaceX() {
             </div>
 
             <div className="image-container">
-                <img src={Launchsite1} style={{width: "45%"}}
+                <img src={Launchsite1} className="img-45"
                     alt="The number of success and failure of first stage landing in SpaceX 3 
                     launch sites - CCSFS SLC-40, KSC LC-39A, VSFB SLC-4E" />
                 <p className="italic center">
@@ -391,7 +391,7 @@ export default function SpaceX() {
             </div>
 
             <div className="image-container">
-                <img src={Customer1} style={{width: "40%"}}
+                <img src={Customer1} className="img-40"
                     alt="The top customers of SpaceX - SpaceX, NASA, SES, Iridium Communications" />
                 <p className="italic center">
                     The top customers of SpaceX - SpaceX, NASA, SES, Iridium Communications
@@ -418,7 +418,7 @@ export default function SpaceX() {
             </div>
 
             <div className="image-container">
-                <img src={Booster1} style={{width: "50%"}}
+                <img src={Booster1} className="img-50"
                     alt="The number of successful and failure flights of SpaceX Falcon 9 family " />
                 <p className="italic center">
                     The number of successful and failure flights of SpaceX Falcon 9 family 
@@ -448,7 +448,7 @@ export default function SpaceX() {
             </div>
 
             <div className="image-container">
-                <img src={Boosterlanding1} style={{width: "40%"}}
+                <img src={Boosterlanding1} className="img-40"
                     alt="The number of successful and failure flights of SpaceX based on booster landing" />
                 <p className="italic center">
                     The number of successful and failure flights of SpaceX based on booster landing

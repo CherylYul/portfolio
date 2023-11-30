@@ -29,11 +29,11 @@ export default function Home(props) {
                 courses blew my mind and gave me a window on how proper coding style should be, some of 
                 projects that I have worked on:</p>
                 <ul className="home-project-list">
-                    <li><a href="#" target="_blank" rel="noreferrer">Bulky Web (.NET framework, C#)</a></li>
-                    <li><a href="#" target="_blank" rel="noreferrer">My portfolio (ReactJS, TailwindCSS)</a></li>
-                    <li><a href="#" target="_blank" rel="noreferrer">SpaceX first stage landing prediction (scraping, python, ML, dashboard)</a></li>
-                    <li><a href="#" target="_blank" rel="noreferrer">VanLife app (ReactJS)</a></li>
-                    <li><a href="#" target="_blank" rel="noreferrer">Huffman (C++, Qt framework)</a></li>
+                    <li><a href="/" target="_blank" rel="noreferrer">Bulky Web (.NET framework, C#)</a></li>
+                    <li><a href="/" target="_blank" rel="noreferrer">My portfolio (ReactJS, TailwindCSS)</a></li>
+                    <li><a href="/" target="_blank" rel="noreferrer">SpaceX first stage landing prediction (scraping, python, ML, dashboard)</a></li>
+                    <li><a href="/" target="_blank" rel="noreferrer">VanLife app (ReactJS)</a></li>
+                    <li><a href="/" target="_blank" rel="noreferrer">Huffman (C++, Qt framework)</a></li>
                 </ul>
                 <p>I’m building a Chinese starter course for working people and pursuit to having an 
                 effective Chinese learning community for everyone. </p>

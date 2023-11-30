@@ -79,14 +79,16 @@ footer.dark {
   margin: 2rem;
 }
 
-.vertical-img {
-  width: 100%;
-}
+.img-40,
+.img-45,
+.img-50,
+.img-60 { width: 100%; }
 
 @media (min-width: 415px) {
-  .vertical-img {
-    width: 60%;
-  }
+  .img-40 { width: 40%; }
+  .img-45 { width: 45%; }
+  .img-50 { width: 50%; }
+  .img-60 { width: 60%; }
 }
 
 /* ----- UTILS ----- */
@@ -133,6 +135,7 @@ p {
   margin: 1.5em 0;
   font-size: 0.9rem;
   overflow-x: scroll;
+  white-space: nowrap;
 }
 
 .note-container p {
@@ -423,6 +426,13 @@ footer i { font-size: 1.5rem; }
 .project-skill:focus,
 .blog-type:focus {
   outline: none;
+}
+
+@media (min-width: 415px) {
+  .project-el, 
+  .post-el { 
+    margin: 4rem 0.75rem;
+  }
 }
 
 /* ----- BLOG ----- */
