@@ -5,7 +5,7 @@ import projectdata from "../assets/data/project"
 export default function Projects(props) {
     const projectsEl = projectdata.map(data => 
     <div key={data.id} className="project-el">
-        <Link to={`/projects/${data.id}`}>
+        <Link to={`/projects/${data.id}`} className="link-without-underline">
             <h3 className="project-title">{data.name}</h3>
         </Link>
         <p className="project-desc">{data.desc}</p>

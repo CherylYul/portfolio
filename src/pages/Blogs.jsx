@@ -20,29 +20,32 @@ export default function Blogs(props) {
     const displayedBlogs = tagFilter ? 
         blogdata.filter(blog => blog.tags.includes(tagFilter)) : blogdata
 
-    const blogElements = displayedBlogs.map(blog => 
-        <div key={blog.id} className="post-el">
-            <small className="post-date">{blog.date}</small>
-            <Link 
-                to={`/blogs/${blog.id}`} 
-                state={{
-                    search: `?${searchParams.toString()}`,
-                    tag: tagFilter
-                }}
-            >
-                <h3 className="post-title">{blog.title}</h3>
-            </Link>
-            {blog.tags.map(tag => 
-                <button className={`blog-type ${tag === tagFilter ? "selected": ""}`}>
-            {tag}</button>)}
-        </div>
+    const blogElements = displayedBlogs.map(data => 
+    <div key={data.id} className="post-el">
+        <small className="post-date">{data.date}</small>
+        <Link 
+            to={`/blogs/${data.id}`} 
+            className="link-without-underline"
+            state={{
+                search: `?${searchParams.toString()}`,
+                tag: tagFilter
+            }}
+        >
+            <h3 className="post-title">{data.title}</h3>
+        </Link>
+        <p className="post-desc">{data.desc}</p>
+        {data.tags.map(
+            tag => <button className={`blog-type ${tag === tagFilter ? "selected": ""}`}>
+                {tag}</button>)
+        }
+    </div>
     )
 
     return (
         <div className={`${props.mode ? "dark" : ""} blogs-container`}>
             <div className="center-container">
-                <h3 className="blog-filter bold">Category:</h3>
                 <div className="filter-buttons">
+                    <h3 className="bold">Category:</h3>
                     <button 
                         onClick={() => handleFilterChange("tag", "life")}
                         className={`blog-type ${tagFilter === "life" ? "selected": ""}`}>
@@ -54,9 +57,9 @@ export default function Blogs(props) {
                             career
                     </button>
                     <button 
-                        onClick={() => handleFilterChange("tag", "computer science")}
-                        className={`blog-type ${tagFilter === "computer science" ? "selected": ""}`}>
-                            computer science
+                        onClick={() => handleFilterChange("tag", "recursion")}
+                        className={`blog-type ${tagFilter === "recursion" ? "selected": ""}`}>
+                            recursion
                     </button>
                 </div>
                 {blogElements}

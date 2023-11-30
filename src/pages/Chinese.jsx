@@ -8,10 +8,10 @@ export default function Chinese(props) {
             <p>Topics: {lec.topic}</p>
             <h4>Lecture Resources</h4>
             <ul>
-                <li>Lecture Notes: <a href={lec.notes}>[Drive]</a></li>
-                <li>Lecture Slide: <a href={lec.slide}>[Canva]</a></li>
-                <li>Lecture Challenge: <a href={lec.challenge}>[Canva]</a></li>
-                <li>Lecture Notes: <a href={lec.newVoc}>[Quizlet]</a></li>
+                <li>Lecture Notes: <a href={lec.notes} target="_blank">[Drive]</a></li>
+                <li>Lecture Slide: <a href={lec.slide} target="_blank">[Canva]</a></li>
+                <li>Lecture Challenge: <a href={lec.challenge} target="_blank">[Canva]</a></li>
+                <li>Lecture Notes: <a href={lec.newVoc} target="_blank">[Quizlet]</a></li>
             </ul>
         </div>
     )
@@ -27,7 +27,7 @@ export default function Chinese(props) {
                     conversations (self-introduction, weather conversations, daily shopping, describe 
                     things, etc) and actually get hand on practicing your own Chinese expression.
                 </p>
-                <div className="lecture-container">
+                <div className="lecture-container end">
                     {lectureElements}
                 </div>
             </div>

@@ -4,7 +4,7 @@ const MenuContext = React.createContext()
 export { MenuContext }
 
 export default function Menu({ children, title }) {
-    const [open, setOpen] = React.useState(false)
+    const [open, setOpen] = React.useState(true)
     function toggleOpen() { setOpen(prev => !prev) }
     return (
         <MenuContext.Provider value={open}>

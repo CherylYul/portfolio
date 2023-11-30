@@ -2,18 +2,18 @@ import React from "react"
 import Menu from "../assets/Menu/Menu"
 import Dropdown from "../assets/Menu/MenuDropdown"
 import MenuItem from "../assets/Menu/MenuItem"
-import Falcon9Price from "../assets/falcon9.png"
-import Falcon9Structure from "../assets/falcon9-structure.png"
-import Falcon9Droneship from "../assets/falcon9-droneship.jpg"
-import Launchsite1 from "../assets/launchsite-1.png"
-import Launchsite2 from "../assets/launchsite-2.png"
-import Customer1 from "../assets/customer-1.png"
-import Booster1 from "../assets/booster-1.png"
-import Boosterlanding1 from "../assets/boosterlanding-1.png"
-import Relationship1 from "../assets/relationship-1.png"
-import Relationship2 from "../assets/relationship-2.png"
-import Relationship3 from "../assets/relationship-3.png"
-import Prediction1 from "../assets/prediction-1.png"
+import Falcon9Price from "../assets/spacex/falcon9.png"
+import Falcon9Structure from "../assets/spacex/falcon9-structure.png"
+import Falcon9Droneship from "../assets/spacex/falcon9-droneship.jpg"
+import Launchsite1 from "../assets/spacex/launchsite-1.png"
+import Launchsite2 from "../assets/spacex/launchsite-2.png"
+import Customer1 from "../assets/spacex/customer-1.png"
+import Booster1 from "../assets/spacex/booster-1.png"
+import Boosterlanding1 from "../assets/spacex/boosterlanding-1.png"
+import Relationship1 from "../assets/spacex/relationship-1.png"
+import Relationship2 from "../assets/spacex/relationship-2.png"
+import Relationship3 from "../assets/spacex/relationship-3.png"
+import Prediction1 from "../assets/spacex/prediction-1.png"
 
 export default function SpaceX() {
     return (
@@ -22,7 +22,7 @@ export default function SpaceX() {
                 <h1 className="proj-title">SpaceX first landing prediction</h1>
                 <div className="proj-sub">
                     <small>Mar 9 2023 • YulCheryl</small>
-                    <a className="proj-github-link cfd9de-border"
+                    <a className="proj-github-link cfd9de-border" target="_blank"
                     href="https://github.com/CherylYul/spacex-first-stage-landing-prediction">
                         <i className="bi bi-github"></i>
                         View repository
@@ -44,7 +44,7 @@ export default function SpaceX() {
                 information, or for venture capitalists to make further decision in their investment.</p>
             </div>
 
-            <p>SpaceX first landing prediction is the capstone project of <a href="https://www.coursera.org/professional-certificates/ibm-data-science">IBM Data Science Professional Course</a> which 
+            <p>SpaceX first landing prediction is the capstone project of <a href="https://www.coursera.org/professional-certificates/ibm-data-science" target="_blank">IBM Data Science Professional Course</a> which 
             I have finished recently. This course provides fundamental and essential skills with overall 
             knowledge about data science from visualizing data to building ML pipeline models. If you are 
             finding the way to step into data science field or to gain an exhaustive overview of it, then 
@@ -99,7 +99,7 @@ export default function SpaceX() {
             would crash or fail in landing.</p>
 
             <div className="image-container">
-                <img src={Falcon9Structure} style={{width: "60%"}}
+                <img src={Falcon9Structure} className="vertical-img"
                     alt="Falcon 9 structure of first stage and second stage" />
                 <p className="italic center">
                     The structure of Falcon 9 including first stage and second stage 
@@ -121,7 +121,7 @@ export default function SpaceX() {
 
             <h2>Part II: Data Approachs</h2>
             
-            <p>The data are collected from <a href="https://github.com/r-spacex/SpaceX-API">SpaceX-API</a> and <a href="https://en.wikipedia.org/wiki/List_of_Falcon_9_and_Falcon_Heavy_launches">
+            <p>The data are collected from <a href="https://github.com/r-spacex/SpaceX-API" target="_blank">SpaceX-API</a> and <a href="https://en.wikipedia.org/wiki/List_of_Falcon_9_and_Falcon_Heavy_launches" target="_blank">
             List of Falcon 9 and Falcon Heavy on Wikipedia</a> by using BeautifulSoup and requests.</p>
 
             <h3>Collecting data from SpaceX API</h3>
@@ -598,12 +598,12 @@ export default function SpaceX() {
             <h2>Resources</h2>
 
             <ul className="resources">
-                <li><a href="https://www.spacex.com/media/falcon-users-guide-2021-09.pdf">SpaceX Falcon User's Guide</a></li>
-                <li><a href="https://www.spacex.com/media/Capabilities&Services.pdf">SpaceX Falcon 9 CAPABILITIES & SERVICES</a></li>
-                <li><a href="https://www.sphericalinsights.com/reports/space-exploration-market">Global Space Exploration Market</a></li>
-                <li><a href="https://github.com/r-spacex/SpaceX-API">SpaceX-API</a></li>
-                <li><a href="https://en.wikipedia.org/wiki/List_of_Falcon_9_and_Falcon_Heavy_launches">List of Falcon 9 and Falcon Heavy Launches 2020-2023</a></li>
-                <li><a href="https://en.wikipedia.org/wiki/List_of_Falcon_9_and_Falcon_Heavy_launches_(2010%E2%80%932019)">List of Falcon 9 and Falcon Heavy Launches 2010-2019</a></li>
+                <li><a href="https://www.spacex.com/media/falcon-users-guide-2021-09.pdf" target="_blank">SpaceX Falcon User's Guide</a></li>
+                <li><a href="https://www.spacex.com/media/Capabilities&Services.pdf" target="_blank">SpaceX Falcon 9 CAPABILITIES & SERVICES</a></li>
+                <li><a href="https://www.sphericalinsights.com/reports/space-exploration-market" target="_blank">Global Space Exploration Market</a></li>
+                <li><a href="https://github.com/r-spacex/SpaceX-API" target="_blank">SpaceX-API</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/List_of_Falcon_9_and_Falcon_Heavy_launches" target="_blank">List of Falcon 9 and Falcon Heavy Launches 2020-2023</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/List_of_Falcon_9_and_Falcon_Heavy_launches_(2010%E2%80%932019)" target="_blank">List of Falcon 9 and Falcon Heavy Launches 2010-2019</a></li>
             </ul>
 
             <div className="end"></div>

@@ -10,7 +10,6 @@ export default function Header(props) {
                 </div>
                 <div className="header--right">
                     <nav>
-                        <Link className="site-about" to="./about">About</Link>
                         <Link className="site-projects" to="./projects">Projects</Link>
                         <Link className="site-blogs" to="./blogs">Blogs</Link>
                         <Link className="site-chinese" to="./chinese">Chinese</Link>

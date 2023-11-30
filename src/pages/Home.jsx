@@ -25,15 +25,15 @@ export default function Home(props) {
                 <p>I love making all the repeated things work automatically, and enhancing program 
                 performance to provide users the best experience.</p>
                 <p>Recently, I’ve been in a funny journey applying a great deal of knowledge that I gained 
-                from <a href="https://web.stanford.edu/class/cs106b/">Programming Abstractions CS106B</a>, <a href="https://stanford-cs161.github.io/winter2023/">Design and Analysis of Algorithms CS161</a>, and <a href="https://scrimba.com/learn/frontend">Scrimba Frontend Career Path</a>. These 
+                from <a href="https://web.stanford.edu/class/cs106b/" target="_blank">Programming Abstractions CS106B</a>, <a href="https://stanford-cs161.github.io/winter2023/" target="_blank">Design and Analysis of Algorithms CS161</a>, and <a href="https://scrimba.com/learn/frontend" target="_blank">Scrimba Frontend Career Path</a>. These 
                 courses blew my mind and gave me a window on how proper coding style should be, some of 
                 projects that I have worked on:</p>
                 <ul className="home-project-list">
-                    <li><a href="#">Bulky Web (.NET framework, C#)</a></li>
-                    <li><a href="#">My portfolio (ReactJS, TailwindCSS)</a></li>
-                    <li><a href="#">SpaceX first stage landing prediction (scraping, python, ML, dashboard)</a></li>
-                    <li><a href="#">VanLife app (ReactJS)</a></li>
-                    <li><a href="#">Huffman (C++, Qt framework)</a></li>
+                    <li><a href="#" target="_blank">Bulky Web (.NET framework, C#)</a></li>
+                    <li><a href="#" target="_blank">My portfolio (ReactJS, TailwindCSS)</a></li>
+                    <li><a href="#" target="_blank">SpaceX first stage landing prediction (scraping, python, ML, dashboard)</a></li>
+                    <li><a href="#" target="_blank">VanLife app (ReactJS)</a></li>
+                    <li><a href="#" target="_blank">Huffman (C++, Qt framework)</a></li>
                 </ul>
                 <p>I’m building a Chinese starter course for working people and pursuit to having an 
                 effective Chinese learning community for everyone. </p>
