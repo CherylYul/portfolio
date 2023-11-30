@@ -8,10 +8,10 @@ export default function Chinese(props) {
             <p>Topics: {lec.topic}</p>
             <h4>Lecture Resources</h4>
             <ul>
-                <li>Lecture Notes: <a href={lec.notes} target="_blank">[Drive]</a></li>
-                <li>Lecture Slide: <a href={lec.slide} target="_blank">[Canva]</a></li>
-                <li>Lecture Challenge: <a href={lec.challenge} target="_blank">[Canva]</a></li>
-                <li>Lecture Notes: <a href={lec.newVoc} target="_blank">[Quizlet]</a></li>
+                <li>Lecture Notes: <a href={lec.notes} target="_blank" rel="noreferrer">[Drive]</a></li>
+                <li>Lecture Slide: <a href={lec.slide} target="_blank" rel="noreferrer">[Canva]</a></li>
+                <li>Lecture Challenge: <a href={lec.challenge} target="_blank" rel="noreferrer">[Canva]</a></li>
+                <li>Lecture Notes: <a href={lec.newVoc} target="_blank" rel="noreferrer">[Quizlet]</a></li>
             </ul>
         </div>
     )
