@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.ebe4a5ca.css",
-    "main.js": "/portfolio/static/js/main.924b04e6.js",
+    "main.css": "/portfolio/static/css/main.d3466c76.css",
+    "main.js": "/portfolio/static/js/main.da56ea5a.js",
     "static/js/787.1ed0c42c.chunk.js": "/portfolio/static/js/787.1ed0c42c.chunk.js",
     "static/media/launchsite-2.png": "/portfolio/static/media/launchsite-2.8592db4c725bce622453.png",
     "static/media/falcon9-droneship.jpg": "/portfolio/static/media/falcon9-droneship.0d689c3543335141cc16.jpg",
@@ -17,12 +17,12 @@
     "static/media/customer-1.png": "/portfolio/static/media/customer-1.c2aa977402018df66013.png",
     "static/media/logo.svg": "/portfolio/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/portfolio/index.html",
-    "main.ebe4a5ca.css.map": "/portfolio/static/css/main.ebe4a5ca.css.map",
-    "main.924b04e6.js.map": "/portfolio/static/js/main.924b04e6.js.map",
+    "main.d3466c76.css.map": "/portfolio/static/css/main.d3466c76.css.map",
+    "main.da56ea5a.js.map": "/portfolio/static/js/main.da56ea5a.js.map",
     "787.1ed0c42c.chunk.js.map": "/portfolio/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ebe4a5ca.css",
-    "static/js/main.924b04e6.js"
+    "static/css/main.d3466c76.css",
+    "static/js/main.da56ea5a.js"
   ]
 }
