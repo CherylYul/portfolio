@@ -1,17 +1,15 @@
-/* ----- CENTER LAYOUT ----- */
+  /* ----- CENTER LAYOUT ----- */
 
-.about-container,
-.blog-detail-container,
-.blogs-container,
-.chinese-container,
 .home-container,
-.project-detail-container,
 .projects-container,
+.project-detail-container,
+.blogs-container,
+.blog-detail-container,
+.chinese-container,
 footer, header {
   padding: 0.5rem; /* margin strange behavior */
 }
 
-.about-container .center-container,
 .blog-detail-container .center-container,
 .blogs-container .center-container,
 .chinese-container .center-container,
@@ -27,14 +25,28 @@ footer, header {
   padding: 1.5rem;
 }
 
-.center-container a:link,
-.center-container a:visited { 
-  color: #1C1D21; 
+.home-container a:link,
+.projects-container a:link,
+.project-detail-container a:link,
+.blogs-container a:link,
+.chinese-container a:link { 
+  color: #2a7ae2; 
 }
 
-.bi-list {
-  font-size: 2rem;
-  /* font-weight: 900; */
+.home-container a:visited,
+.projects-container a:visited,
+.project-detail-container a:visited,
+.blogs-container a:visited,
+.chinese-container a:visited { 
+  color: #1756a9; 
+}
+
+.home-container a:hover,
+.projects-container a:hover,
+.project-detail-container a:hover,
+.blogs-container a:hover, 
+.chinese-container a:hover { 
+  text-decoration: underline; 
 }
 
 /* ----- DARK INTERFACE ----- */
@@ -45,7 +57,6 @@ footer.dark {
   color: #fdfdfd;
 }
 
-.about-container.dark,
 .blog-detail-container.dark,
 .blogs-container.dark,
 .chinese-container.dark,
@@ -56,27 +67,29 @@ footer.dark {
   color: #fdfdfd;
 }
 
-.projects-container.dark .center-container a:link,
-.projects-container.dark .center-container a:visited,
-.blogs-container.dark .center-container a:link,
-.blogs-container.dark .center-container a:visited,
-.chinese-container.dark .center-container a:link,
-.chinese-container.dark .center-container a:visited { 
-  color: #fdfdfd; 
-}
-
 .home-container.dark a:link,
 .home-container.dark a:visited,
+.projects-container.dark a:link,
+.projects-container.dark a:visited,
 .project-detail-container.dark a:link,
-.project-detail-container.dark a:visited {
-  color: #fdfdfd;
+.project-detail-container.dark a:visited,
+.blogs-container.dark a:link,
+.blogs-container.dark a:visited,
+.chinese-container.dark a:link,
+.chinese-container.dark a:visited {
+  color: #cef2ff;
 }
 
 /* ----- IMAGES ----- */
 
+.home-container code {
+  font-size: 1.8rem;
+  letter-spacing: 8px;
+}
+
 .home-image {
-  width: 150px;
-  margin: 2rem;
+  width: 300px;
+  margin: 2rem auto;
 }
 
 .img-40,
@@ -84,7 +97,7 @@ footer.dark {
 .img-50,
 .img-60 { width: 100%; }
 
-@media (min-width: 415px) {
+@media (min-width: 500px) {
   .img-40 { width: 40%; }
   .img-45 { width: 45%; }
   .img-50 { width: 50%; }
@@ -101,12 +114,16 @@ footer.dark {
 .pl-3 { padding: 0 0 0 30px; }
 .pl-6 { padding: 0 0 0 60px; }
 .pl-9 { padding: 0 0 0 90px; }
-.link-without-underline { text-decoration: none; }
 code { display: block; }
 p { 
   line-height: 1.6; 
   width: fit-content;
 }
+.bi-list {
+  font-size: 2rem;
+  /* font-weight: 900; */
+}
+a { text-decoration: none; }
 
 /* ----- BLOG & PROJECT UTILS ----- */
 
@@ -192,7 +209,6 @@ header {
 }
 
 header a {
-  text-decoration: none;
   color: #4D4D4D;
   font-weight: 600;
   padding: 0.5em 0.75em;
@@ -272,7 +288,33 @@ header.dark .header--right nav a:hover {
   color: #21222A;
 }
 
-@media (min-width: 415px) {
+@media (min-width: 580px) {
+  header { padding: 0; }
+  header .center-container {
+      height: 60px;
+      display: flex;
+      align-items: center;
+  }
+
+  header .header--left {
+    width: 30%;
+    max-width: 240px;
+    text-align: left;
+  }
+
+  header .header--right {
+    width: 70%;
+    max-width: 560px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  header .site-main { font-size: 1.5rem; }
+  header .theme { margin: 0; }
+}
+
+@media (max-width: 380px) {
   header { padding: 0; }
   header .center-container {
       height: 60px;
@@ -346,7 +388,7 @@ footer .contact-container div {
 footer.dark { border-top: none; }
 footer i { font-size: 1.5rem; }
 
-@media (min-width: 415px) {
+@media (min-width: 500px) {
   footer .center-container { display: flex; }
   footer .footer--left {
       width: 60%;
@@ -471,13 +513,13 @@ footer i { font-size: 1.5rem; }
   align-items: center;
 }
 
-.proj-github-link {
-  text-decoration: none;
+.proj-header a.proj-github-link {
   margin-left: auto;
   display: flex;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
   border-radius: 20px;
+  color: #0f1419;
 }
 
 @media (min-width: 415px) {
