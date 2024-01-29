@@ -25,7 +25,6 @@ export default function Blogs(props) {
         <small className="post-date">{data.date}</small>
         <Link 
             to={`/blogs/${data.id}`} 
-            className="link-without-underline"
             state={{
                 search: `?${searchParams.toString()}`,
                 tag: tagFilter

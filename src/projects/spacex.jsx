@@ -21,34 +21,36 @@ export default function SpaceX() {
             <div className="proj-header">
                 <h1 className="proj-title">SpaceX first landing prediction</h1>
                 <div className="proj-sub">
-                    <small>Mar 9 2023 • YulCheryl</small>
+                    <small>Jan 19 2024 • YulCheryl</small>
                     <a className="proj-github-link cfd9de-border" target="_blank" rel="noreferrer"
                     href="https://github.com/CherylYul/spacex-first-stage-landing-prediction">
                         <i className="bi bi-github"></i>
                         View repository
-                        <i class="bi bi-box-arrow-up-right"></i>
+                        <i className="bi bi-box-arrow-up-right"></i>
                     </a>
                 </div>
             </div>
 
             <div className="proj-summary quote-container">
                 <h3>Summary</h3>
-                <p>SpaceX offers competitive price for its Falcon 9, only 67 million dollars comparing 
-                to other providers (more than 150 million dollars each). This advantage price can be 
-                obtained by reusing the first stage of rocket. Hence, this project aims to predict 
-                the successful rate of landing the first stage after launching rocket.</p>
-                <p>The results obtained was up to 91.57% with the features used in analysis and 
-                predictions are payload mass, orbit, serial, grid fins, legs, blocks, and landing pad. 
-                We then can apply the explored data and predicted results for future rocket launch 
-                projects, for new providers who want to step into rocket space market as an useful 
-                information, or for venture capitalists to make further decision in their investment.</p>
+                <p>SpaceX offers a competitive price for its Falcon 9, priced at only 67 million dollars, 
+                    in contrast to other providers (whose costs exceed 150 million dollars each). This 
+                    advantageous price is achieved by reusing the rocket's first stage. Hence, this 
+                    project aims to predict the success rate of landing the first stage after a rocket 
+                    launch.</p>
+                <p>The results obtained reached an impressive 91.57%, utilizing features such as payload 
+                    mass, orbit, serial number, grid fins, legs, blocks, and landing pad in the analysis 
+                    and predictions. We can then apply the explored data and predicted results to future 
+                    rocket launch projects. This information is valuable for new providers entering the 
+                    rocket space market and serves as useful insights for venture capitalists making 
+                    investment decisions.</p>
             </div>
 
-            <p>SpaceX first landing prediction is the capstone project of <a href="https://www.coursera.org/professional-certificates/ibm-data-science" target="_blank" rel="noreferrer">IBM Data Science Professional Course</a> which 
-            I have finished recently. This course provides fundamental and essential skills with overall 
-            knowledge about data science from visualizing data to building ML pipeline models. If you are 
-            finding the way to step into data science field or to gain an exhaustive overview of it, then 
-            this course is not the bad choice.</p>
+            <p>"SpaceX First Landing Prediction" is the capstone project of <a href="https://www.coursera.org/professional-certificates/ibm-data-science" target="_blank" rel="noreferrer">IBM Data Science Professional Course</a>, which 
+            I recently completed. This course imparts fundamental and essential skills, providing 
+            comprehensive knowledge about data science, ranging from visualizing data to building ML 
+            pipeline models. If you are seeking a way to enter the field of data science or aiming for a 
+            thorough overview of it, then this course is not a bad choice.</p>
 
             <Menu title="Table of contents">
                 <Dropdown>
@@ -58,10 +60,10 @@ export default function SpaceX() {
                     <MenuItem>----Collecting data from Wikipedia</MenuItem>
                     <MenuItem>Part III: Exploring Data</MenuItem>
                     <MenuItem>----1. How does launch site affect landing status?</MenuItem>
-                    <MenuItem>----2. The common customers of SpaceX</MenuItem>
-                    <MenuItem>----3. Which does the version of booster have the highest successful rate?</MenuItem>
-                    <MenuItem>----4. Which type of booster landing has a high success rate?</MenuItem>
-                    <MenuItem>----5. Finding the relationships between features with landing success rate.</MenuItem>
+                    <MenuItem>----2. Frequent clients of SpaceX</MenuItem>
+                    <MenuItem>----3. Which version of the booster has the highest success rate?</MenuItem>
+                    <MenuItem>----4. Which type of booster landing has the highest success rate?</MenuItem>
+                    <MenuItem>----5. Exploring the relationships between features and the landing success rate..</MenuItem>
                     <MenuItem>Part IV: Future Launch Prediction</MenuItem>
                     <MenuItem>Conclusion</MenuItem>
                     <MenuItem>Resources</MenuItem>
@@ -69,18 +71,18 @@ export default function SpaceX() {
             </Menu>
 
             <h2>Part I: Understanding Problems</h2>
-            <p>Space has mostly been dominated by governments for the last 50 and 60 years ago until 
-            billionaires step into and gain some success in space. As space is becoming a potential 
-            source of value for businesses across a wide variety of sectors, including agriculture, 
-            telecommunications, pharmaceuticals, etc, many space companies are hoping to make it not 
-            only just possible but also affordable to put objects into orbit. As a result, a race against 
-            time to reduce the cost of launching rockets is happening.</p>
+            <p>Space has mostly been dominated by governments for the last 50 to 60 years until 
+                billionaires stepped in and gained some success in space. As space is becoming a potential 
+                source of value for businesses across a wide variety of sectors, including agriculture, 
+                telecommunications, pharmaceuticals, etc., many space companies are hoping to make it not 
+                only possible but also affordable to put objects into orbit. As a result, a race against 
+                time to reduce the cost of launching rockets is happening.</p>
             
-            <p>Virgin Galactic is providing suborbital spaceflights, Rocket Lab provides Electronic 
-            and Neutron rockets, Blue Origin manufactures sub-orbital and orbital reusable rockets, 
-            SpaceX sends spacecraft to the International Space Station and StarLink to provide satellite 
-            Internet access. Among them, SpaceX is the clear leader with its Falcon 9, Falcon Heavy and 
-            Falcon Super Heavy rockets. </p>
+            <p>Virgin Galactic provides suborbital spaceflights, Rocket Lab offers Electronic and Neutron 
+                rockets, Blue Origin manufactures suborbital and orbital reusable rockets, and SpaceX 
+                sends spacecraft to the International Space Station and StarLink to provide satellite 
+                Internet access. Among them, SpaceX is the clear leader with its Falcon 9, Falcon Heavy, 
+                and Falcon Super Heavy rockets.</p>
 
             <div className="image-container">
                 <img src={Falcon9Price} style={{width: "100%"}}
@@ -90,13 +92,13 @@ export default function SpaceX() {
                 </p>
             </div>
 
-            <p>Falcon 9 is a two-stage launch vehicle powered including first stage, interstage, second 
-            stage and fairings. The first stage is matched with the second stage by the interstage. After 
-            the rocket launches, the stage seperation happens when the falcon has left the Earth's 
-            atmosphere, the first stage engines shut down, boostback and entry burn to make it landed back 
-            on the ground. Sometimes, the first stage landed successfully which helps decrease the cost of
-            everytime launching rocket (67 million dollars) by reusing the first stage. Other times, it 
-            would crash or fail in landing.</p>
+            <p>The Falcon 9 is a two-stage launch vehicle, including the first stage, interstage, second 
+                stage, and fairings. The first stage is connected to the second stage by the interstage. 
+                After the rocket launches, stage separation occurs when the Falcon has left Earth's 
+                atmosphere. The first stage engines shut down, and a boostback and entry burn are 
+                performed to make it land back on the ground. Sometimes, the first stage lands 
+                successfully, helping decrease the cost of each rocket launch (67 million dollars) by 
+                reusing the first stage. Other times, it might crash or fail in landing.</p>
 
             <div className="image-container">
                 <img src={Falcon9Structure} className="img-60"
@@ -107,22 +109,22 @@ export default function SpaceX() {
                 </p>
             </div>
 
-            <p>With a high pressure released from the first stage, the second stage continue to fly and
-            then move to the fairing and payload seperation (payload is enclosed in the fairings). Stage 
-            two, or the second stage, helps bring the payload to orbit, but most of the work is done by 
-            the first stage which is much larger and more expensive than the second stage. Therefore, the 
-            act of recovering the first stage by making sure it will land successfully is more and more
-            crucial.</p>
+            <p>With high pressure released from the first stage, the second stage continues to fly and 
+                then moves to the fairing and payload separation (payload is enclosed in the fairings). 
+                Stage two, or the second stage, helps bring the payload to orbit, but most of the work 
+                is done by the first stage, which is much larger and more expensive than the second stage. 
+                Therefore, the act of recovering the first stage by ensuring it will land successfully is 
+                becoming more and more crucial.</p>
 
-            <p>If we can accurately predict the likelihood of whether the first stage will land or not, 
-            and understand the impact of each feature contributing to the launching mission, the market 
-            space will be improved significantly as the cost of satellites and other objects sended to 
-            orbit will be lower.</p>
+            <p>If we can accurately predict the likelihood of whether the first stage will land or not and 
+                understand the impact of each feature contributing to the launching mission, the market 
+                space will be significantly improved as the cost of satellites and other objects sent to 
+                orbit will be lower.</p>
 
             <h2>Part II: Data Approachs</h2>
             
-            <p>The data are collected from <a href="https://github.com/r-spacex/SpaceX-API" target="_blank" rel="noreferrer">SpaceX-API</a> and <a href="https://en.wikipedia.org/wiki/List_of_Falcon_9_and_Falcon_Heavy_launches" target="_blank" rel="noreferrer">
-            List of Falcon 9 and Falcon Heavy on Wikipedia</a> by using BeautifulSoup and requests.</p>
+            <p>The data were gathered from <a href="https://github.com/r-spacex/SpaceX-API" target="_blank" rel="noreferrer">SpaceX-API</a> and the <a href="https://en.wikipedia.org/wiki/List_of_Falcon_9_and_Falcon_Heavy_launches" target="_blank" rel="noreferrer">
+            List of Falcon 9 and Falcon Heavy on Wikipedia</a> using BeautifulSoup and requests.</p>
 
             <h3>Collecting data from SpaceX API</h3>
 
@@ -224,24 +226,28 @@ export default function SpaceX() {
                 <code className="pl-6"> ... scrape all data to dataframe ... </code>
             </div>
 
-            <p>After collecting, we convert data into dataframe and handle missing value, invalid data by
-            using pandas and numpy, finally turn data into the right types and format.</p>
+            <p>Upon collection, we transform the data into a dataframe, addressing missing values and 
+                invalid data using pandas and numpy. Finally, we ensure the data is in the correct types 
+                and format.</p>
             
             <h2>Part III: Exploring Data</h2>
             
-            <p>We explore data by 3 methods. Firstly, utilize sqlite3 library and using sql magic to 
-            do feature analysis and analyze the 2022 launches. Secondly, using seaborn and matplotlib 
-            to understand the relationships between features, for example flight number with payload mass, 
-            orbit with success rate to help us do feature extraction for further prediction. We also 
-            conduct launch sites analysis by using folium to visualize the location of each launch site 
-            on the map and calculate the distance from it.</p>
+            <p>Our data exploration involves three key methods. Firstly, we leverage the sqlite3 library 
+                and use SQL magic to conduct feature analysis and analyze launches from 2022. Secondly, 
+                we employ seaborn and matplotlib to comprehend the relationships between various features. 
+                For instance, we explore the correlation between flight number and payload mass, as well 
+                as the connection between orbit and success rate. This step aids us in feature extraction 
+                for subsequent prediction tasks. Additionally, we conduct an analysis of launch sites 
+                using folium, allowing us to visualize the locations of each launch site on the map and 
+                calculate their distances.</p>
 
             <h3 >1. How does launch site affect landing status?</h3>
 
-            <p>SpaceX has 3 main launch sites CCSFS SLC-40, total 115 flights, KSC LC-39A, 57 flights, 
-            VSFB SLC-4E, 36 flights. Because CCSFS SLC-40 used most for R&D development, this site 
-            has high failure rate, the site that has highest successful rate was KSC 91.22% 
-            (from 2010-2022).</p>
+            <p>SpaceX utilizes three primary launch sites: CCSFS SLC-40 with a total of 115 flights, 
+                KSC LC-39A with 57 flights, and VSFB SLC-4E with 36 flights. Notably, CCSFS SLC-40 is 
+                predominantly used for research and development (R&D) activities, contributing to its 
+                comparatively higher failure rate. In contrast, KSC LC-39A boasts the highest successful 
+                rate at 91.22% during the period from 2010 to 2022.</p>
 
             <div className="note-container">
                 <p>CCSFS: Cape Canaveral Space Force Station</p>
@@ -266,10 +272,10 @@ export default function SpaceX() {
                 </p>
             </div>
             
-            <p>Most of ocean landing happened in CCSFS (5 flights) with the successful rate of 80%, 
-            VSFB also had 2 flights landing on the ocean, KSC didn't have ocean landing but it has 
-            highest successful rate of drone ship landing, and we only have one failure of landing 
-            on ground in CCSFS site.</p>
+            <p>The majority of ocean landings occurred at CCSFS (5 flights) with a success rate of 80%. 
+                Additionally, VSFB experienced 2 ocean landings, while KSC did not have any ocean landings 
+                but achieved the highest successful rate for drone ship landings. Notably, there was only 
+                one failure of landing on the ground, which took place at the CCSFS site.</p>
 
             <div className="image-container">
                 <img src={Falcon9Droneship} style={{width: "100%"}}
@@ -281,11 +287,13 @@ export default function SpaceX() {
                 </p>
             </div>
 
-            <p>CCSFS SLC-40 is the site which had most launches, so it's reasonable that it included 
-            various orbit launches that the other sites haven’t tried yet. However, the remainders 
-            also had its special features, KSC had one sub-orbital and VSFB had one Heliocentric orbit 
-            which CCSFS didn't have yet, other than that, when we look carefully, we can observe that 
-            the large proportion of SSO and PO orbits were particularly from VSFB launch sites.</p>
+            <p>CCSFS SLC-40 stands out as the launch site with the highest number of launches, making it 
+                logical that it accommodated a diverse range of orbit launches that other sites had not 
+                attempted. Nevertheless, the remaining sites also boasted distinctive features. KSC, for 
+                instance, hosted one sub-orbital launch, while VSFB included one Heliocentric orbit, a 
+                category not yet explored by CCSFS. Upon closer inspection, it becomes evident that a 
+                significant portion of Sun-Synchronous Orbit (SSO) and Polar Orbit (PO) launches 
+                originated specifically from the VSFB launch site.</p>
 
             <div className="note-container">
                 <p>LEO: Low Earth Orbit, an orbit around Earth with a period of 128 minutes or less, 
@@ -315,10 +323,11 @@ export default function SpaceX() {
                 point</p>
             </div>
             
-            <p>When using folium library to visualize the location of launch sites, the map shows that 
-            VAFB is located near the west coast of California, CCSFS is at a short distance from KSC which
-            is just 5km away, their location is on the east coast of Florida. NASA Johnson Space Center is 
-            between the two states located near Houston, Texas.</p>
+            <p>When employing the Folium library to visualize the launch site locations, the map 
+                illustrates that VAFB is situated near the west coast of California, while CCSFS is in 
+                close proximity to KSC, with just a 5km separation; both are positioned along the east 
+                coast of Florida. NASA Johnson Space Center lies between the two states, situated near 
+                Houston, Texas.</p>
 
             <div className="code-container">    
                 <code>launch_site_info = spacex_df[['launch site', 'longitude', 'latitude']]</code>
@@ -342,28 +351,31 @@ export default function SpaceX() {
                 <img src={Launchsite2} style={{width: "100%"}}
                     alt="The presentation of SpaceX's launch sites map by using Folium library" />
                 <p className="italic center">
-                    The presentation of SpaceX's launch sites map by using Folium library
+                    The presentation of SpaceX's launch sites map using Folium library
                 </p>
             </div>
 
-            <p>Launch site are in close proximity to coastline, which can help rocket fly over the ocean 
-            during launch, crew also has option to abort launch and attempt water landing, and finally 
-            minimize the risk from falling debris. Also launch site need to near the railway and highway 
-            which allows easily transport for heavy cargo and property, but it is far from city to 
-            restrict the danger of launching rockets to population dense areas.</p>
+            <p>Launch sites are strategically located near coastlines, offering the advantage of launching 
+                rockets over the ocean. This positioning provides the crew with the option to abort a 
+                launch, attempting a water landing, and helps minimize risks associated with falling 
+                debris. Additionally, proximity to railways and highways facilitates the easy transport of 
+                heavy cargo and equipment. However, the sites are intentionally situated far from 
+                populated areas to mitigate the potential dangers of rocket launches to densely populated 
+                regions.</p>
 
-            <p>Another feature is easily noticeable that all launch sites are in proximity to equator. 
-            This makes sense as it takes less fuel to get into space from the equator due to the physics 
-            of Earth's rotation.</p>
+            <p>Another notable feature is the proximity of all launch sites to the equator. This design 
+                choice aligns with the physics of Earth's rotation, requiring less fuel to reach space 
+                from the equator.</p>
 
-            <h3 >2. The common customers of SpaceX</h3>
+            <h3 >2. Frequent clients of SpaceX</h3>
 
-            <p>The statistics show that top SpaceX customers are NASA, SpaceX, SES and Iridium 
-            communications. We have total 46 flights which are related to NASA, in which NASA(CRS) 
-            accounted for the most 26 flights but fewer total payload 71326 kgs comparing to NASA(CTS) 
-            6 flights but total payload is 77050 kgs. The average payload mass of each flights of NASA(CRS) 
-            is 2743. Most of NASA flights was in CRS projects, it is a contract solution to deliver cargo 
-            and supplies to the International Space Station (ISS).</p>
+            <p>The statistics reveal that NASA, SpaceX, SES, and Iridium Communications are the top 
+                customers for SpaceX. NASA is the most prominent with a total of 46 flights, with 
+                NASA(CRS) accounting for 26 flights but a lower total payload of 71,326 kgs compared to 
+                NASA(CTS), which has 6 flights with a total payload of 77,050 kgs. The average payload 
+                mass for each flight of NASA(CRS) is 2,743 kgs. The majority of NASA flights are part of 
+                the CRS projects, serving as a contractual solution to deliver cargo and supplies to the 
+                International Space Station (ISS).</p>
             
             <div className="note-container">
                 <p>SES: Luxembourgish leading satellite telecommunications network provider with over 70 
@@ -377,9 +389,9 @@ export default function SpaceX() {
                 research, and space research</p>
             </div>
 
-            <p>LEO orbit is the main trajectory that NASA frequently sends satellite into space with the 
-            high successful rate of 70%. Others, Iridium, SES focuses on PO, and GTO orbit launchs with 
-            the average payload mass is around 9600kg, 4600kg respectively.</p>
+            <p>LEO orbit is the primary trajectory for NASA, with a high success rate of 70%. On the 
+                other hand, Iridium and SES focus on PO and GTO orbit launches, with average payload 
+                masses of around 9,600 kg and 4,600 kg, respectively.</p>
 
             <div className="code-container">    
                 <code>%%sql</code>
@@ -398,17 +410,19 @@ export default function SpaceX() {
                 </p>
             </div>
 
-            <h3 >3. Which does the version of booster have the highest successful rate?</h3>
+            <h3 >3. Which version of the booster has the highest success rate?</h3>
 
-            <p>Falcon 9 has 5 booster version: v1.0, v1.1, FT, Block 4 and Block 5. Block 5 accounted for 
-            most of the flights, it is also the most active rockets of SpaceX which already had 152 flights, 
-            Block 5 can carried from 325kgs to 17400kgs with high average payload mass 10625kgs and high 
-            successful rate up to 94%.</p>
+            <p>The Falcon 9 boasts five booster versions: v1.0, v1.1, FT, Block 4, and Block 5. Among 
+                these, Block 5 has been the most prolific, with 152 flights, making it SpaceX's most 
+                active rocket. Block 5 can carry payloads ranging from 325 kgs to 17,400 kgs, boasting 
+                an impressive average payload mass of 10,625 kgs and an outstanding success rate of 94%.
+                </p>
 
-            <p>On the other hand, v1.0 and v1.1 drew another story, the first version v1.0 didn't have 
-            any successful flight, most of the second version v1.1 was crashed. The two rockets developed 
-            afterwards in Falcon 9 family are F9 B4 and F9 FT is better for commercial launches, lifting 
-            the successful rate to 50%, 75% respectively, but it still cannot compare with F9 Block 5.</p>
+            <p>In contrast, v1.0 and v1.1 tell a different story. The initial version, v1.0, experienced 
+                no successful flights, while most of v1.1's flights ended in failure. The subsequent 
+                developments in the Falcon 9 family, F9 B4 and F9 FT, fared better for commercial 
+                launches, achieving success rates of 50% and 75%, respectively. However, they still fall 
+                short when compared to the success of F9 Block 5.</p>
 
             <div className="code-container">    
                 <code>%%sql</code>
@@ -425,10 +439,10 @@ export default function SpaceX() {
                 </p>
             </div>
 
-            <h3>4. Which type of booster landing has a high success rate?</h3>
+            <h3>4. Which type of booster landing has the highest success rate?</h3>
 
-            <p>Drone ship was the central landing method that SpaceX focus on (total 145 flights) with
-            the success rate of 93.79%.</p>
+            <p>The central landing method that SpaceX has focused on is the drone ship, accounting for 
+                a total of 145 flights with a success rate of 93.79%.</p>
 
             <div className="note-container">
                 <p>Controlled (ocean): the ocean test controlled descent, for the sole purpose of 
@@ -455,13 +469,13 @@ export default function SpaceX() {
                 </p>
             </div>
 
-            <h3>5. Finding the relationships between features with landing success rate.</h3>
+            <h3>5. Exploring the relationships between features and the landing success rate.</h3>
 
-            <p>When the flight number increase, there is a tendency for first stage to land successfully. 
-            The figures give the evidence that almost the flights number which is after 100 were launched
-            without failing. However, if there is a rise in the mass of payload, the first stage will be 
-            less likely to safely landed. Visualization shows that payload mass below 16000 kgs is easier 
-            to gain success.</p>
+            <p>As the flight number increases, there is a noticeable trend of the first stage successfully 
+                landing. The data indicates that almost all flights numbered above 100 were launched 
+                without any failures. However, an increase in payload mass makes it less likely for the 
+                first stage to land safely. Visualization illustrates that payload masses below 16,000 kgs 
+                are more likely to achieve success.</p>
 
             <div className="image-container">
                 <img src={Relationship1} style={{width: "100%"}}
@@ -471,11 +485,10 @@ export default function SpaceX() {
                 </p>
             </div>
 
-            <p>Different launch sites have different success rate. From the beginning, SpaceX primary 
-            launch site was in CCSFS, then during the time of launching flight number 30 to 50, SpaceX 
-            moved to VSFB and KSC launch site, there is only VSFB have 100% success rate at that time. 
-            Since the flight number 130, SpaceX has equally divided the number of launches into three 
-            locations.</p>
+            <p>Different launch sites exhibit varying success rates. Initially, SpaceX's primary launch 
+                site was CCSFS. Between flight numbers 30 and 50, SpaceX expanded to include VSFB and KSC 
+                launch sites, with only VSFB achieving a 100% success rate during that period. Since 
+                flight number 130, SpaceX has evenly distributed launches across all three locations.</p>
 
             <div className="image-container">
                 <img src={Relationship2} style={{width: "100%"}}
@@ -485,9 +498,10 @@ export default function SpaceX() {
                 </p>
             </div>
 
-            <p>Next, we examine the ralationship between flight number and orbit. In VLEO, MEO, and LEO 
-            orbit, the higher the number of flights, the more likely the first stage landed safely. On 
-            the other hand, there seems to be no relationship between flight number with in GTO orbit.</p>
+            <p>Additionally, we explore the relationship between flight number and orbit. In VLEO, MEO, 
+                and LEO orbits, a higher flight number correlates with a greater likelihood of the first 
+                stage landing safely. Conversely, there appears to be no discernible relationship between 
+                flight number and GTO orbit success.</p>
 
             <div className="image-container">
                 <img src={Relationship3} style={{width: "100%"}}
@@ -502,10 +516,10 @@ export default function SpaceX() {
 
             <h2>Part IV: Future Launch Prediction</h2>
 
-            <p>Based on the details data about launching features collected, cleaned, and explored in the 
-            previous steps, we then utilize the well-designed sklearn library to predict the success rate 
-            of the first stage landing. The process includes standardize data, and split it into train and 
-            test set with the test size 20%. </p>
+            <p>Drawing insights from detailed data on launch features, collected, cleaned, and explored 
+                in previous steps, we leverage the well-designed sklearn library to predict the success 
+                rate of first-stage landings. The process involves standardizing data and splitting it 
+                into training and test sets, with a test size of 20%.</p>
             
             <p>1. Logistic Regression Model</p>
 
@@ -562,10 +576,10 @@ export default function SpaceX() {
                 <code>KNN_model.fit(x_train, y_train)</code>
             </div>
 
-            <p>We use the hyperparameter tunning method to train data that mainly focus on 4 types of 
-            models containing logistic regression, support vector machine, decision tree classifier, and 
-            k-nearest neighbors classifier. The result was incredibly satisfying since the accurate rate 
-            of prediction can be up to 92% which are shown in the picture below.</p>
+            <p>Employing hyperparameter tuning, we focus on training data using four main types of models: 
+                logistic regression, support vector machine, decision tree classifier, and k-nearest 
+                neighbors classifier. The results are remarkably satisfying, with an accuracy rate of up 
+                to 92%, as depicted in the image below.</p>
 
             <div className="image-container">
                 <img src={Prediction1} style={{width: "100%"}}
@@ -579,21 +593,22 @@ export default function SpaceX() {
                 </p>
             </div>
             
-            <p>Overfitting is the main reason to explain why decision tree has the highest score (94%)
-            in train set, but lowest point in test set (69%). Therefore, support vector machine appears 
-            to be the top model that has a stable score of 92% in both train and test set.</p>
+            <p>Overfitting explains why the decision tree has the highest score (94%) in the training 
+                set but the lowest score in the test set (69%). Consequently, the support vector machine 
+                emerges as the top model with a stable score of 92% in both the training and test sets.</p>
 
-            <p>Overall, the number of 92% won't stop here since SpaceX has constantly improved reusable 
-            rocket with the aim of minimizing the cost of space access and providing even more affordable 
-            flight for different customers.</p>
+            <p>This 92% accuracy is just a starting point, as SpaceX continually improves reusable rockets, 
+                aiming to minimize the cost of space access and offer more affordable flights for diverse 
+                customers.</p>
 
             <h2>Conclusion</h2>
             
-            <p>It's been a lot fun reading a whole range of documents related to Falcon 9 rocket as well
-            as applying accumulated knowledge after completing the course and eventually presenting it 
-            here. There's so much about the vastness of space and so many awesome data scientists outside 
-            there that I know this report still has shortcomings, so it would be so kind if I could receive 
-            some suggestions to expand the ideas, fulfill the contents, and enhance the code.</p>
+            <p>It has been a lot of fun reading a wide range of documents related to the Falcon 9 rocket, 
+                as well as applying the accumulated knowledge after completing the course and eventually 
+                presenting it here. There is so much to explore about the vastness of space, and there 
+                are many awesome data scientists out there. I acknowledge that this report may still have 
+                some shortcomings. Therefore, I would be grateful to receive suggestions to expand ideas, 
+                enrich the content, and enhance the code.</p>
 
             <h2>Resources</h2>
 
